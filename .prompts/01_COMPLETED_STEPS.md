@@ -9,4 +9,15 @@ A parent should be able to see what actions to take to enroll their child in a c
 Our values include helping your child gain self confidence, starting a lifetime of movement and exercise, resilience through challenging themselves to improve and learn, positivity and support for themselves and their team.
 Include some stock photos of relevant activities
 
+## Updated Values (from https://rgagymnast.com/about)
+- **Belief**: True strength comes from more than just muscles — it comes from confidence, character, and community.
+- **Vision**: Creating a safe, positive, and empowering environment where athletes can thrive both in and out of the gym. Gymnastics should build resilience for life — teaching discipline, teamwork, and self-belief along the way.
+- **Core Pillars**:
+  1. Confidence, Character & Community
+  2. Effort Over Perfection
+  3. Courage Over Fear
+  4. Growth Over Comparison
+- **Tagline**: Let's build resilience together.
+
+
 

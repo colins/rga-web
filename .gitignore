@@ -1,0 +1,4 @@
+.access
+deploy.sh
+node_modules
+dist

@@ -6,7 +6,10 @@ export const gymInfo = {
   phone: "303-512-0799",
   email: "frontdesk@rgagymnast.com",
   currentWebsite: "https://rgagymnast.com",
-  tagline: "Building Strength, Confidence & Resilience Through Gymnastics",
+  tagline: "Let's build resilience together.",
+  belief: "True strength comes from more than just muscles — it comes from confidence, character, and community.",
+  vision: "Creating a safe, positive, and empowering environment where athletes can thrive both in and out of the gym. Gymnastics should build resilience for life — teaching discipline, teamwork, and self-belief along the way.",
+  motto: "We celebrate effort over perfection, courage over fear, and growth over comparison.",
   membershipFee: {
     child: 50,
     family: 75
@@ -25,34 +28,34 @@ export const gymInfo = {
 
 export const values = [
   {
-    id: "confidence",
-    title: "Self Confidence",
+    id: "confidence-character-community",
+    title: "Confidence, Character & Community",
     icon: "Sparkles",
-    description: "Empowering children to conquer new skills, celebrate achievements, and believe in their unlimited potential on and off the mat.",
+    description: "At Resilience Gymnastics Academy, we believe that true strength comes from more than just muscles — it comes from confidence, character, and community.",
     color: "from-pink-500 to-rose-500",
     image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: "movement",
-    title: "Lifetime of Movement",
+    id: "effort-perfection",
+    title: "Effort Over Perfection",
     icon: "HeartPulse",
-    description: "Instilling core motor skills, balance, flexibility, and a lifelong passion for physical health and active play from age 3 upwards.",
+    description: "We celebrate hard work, determination, and trying your best. Every practice and conversation focuses on dedication over flawless results.",
     color: "from-purple-500 to-indigo-500",
     image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: "resilience",
-    title: "True Resilience",
+    id: "courage-fear",
+    title: "Courage Over Fear",
     icon: "ShieldCheck",
-    description: "Like the phoenix in our emblem, we teach kids to view challenges as opportunities, rise after mistakes, and persist with courage.",
+    description: "Creating a safe, positive, and empowering environment where athletes are encouraged to challenge themselves every step, jump, and handstand of the way.",
     color: "from-amber-500 to-orange-500",
     image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80"
   },
   {
-    id: "positivity",
-    title: "Positivity & Team Support",
+    id: "growth-comparison",
+    title: "Growth Over Comparison",
     icon: "Users",
-    description: "Creating a warm, uplifting atmosphere where every athlete feels valued, cheered on by peers, and supported by certified coaches.",
+    description: "Gymnastics should build resilience for life — teaching discipline, teamwork, and self-belief while focusing on each child's personal progress.",
     color: "from-teal-500 to-emerald-500",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
   }

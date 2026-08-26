@@ -1,6 +1,6 @@
 import React from 'react';
-import { Sparkles, HeartPulse, ShieldCheck, Users, Quote } from 'lucide-react';
-import { values } from '../data/scheduleData';
+import { Sparkles, HeartPulse, ShieldCheck, Users, Quote, Heart } from 'lucide-react';
+import { values, gymInfo } from '../data/scheduleData';
 
 const iconMap = {
   Sparkles: Sparkles,
@@ -16,13 +16,16 @@ export default function ValuesSection({ activeTheme }) {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-100 text-pink-800 font-bold text-xs uppercase tracking-wider mb-3">
-            What We Stand For
+            Who We Are & What We Stand For
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Our Core Values as Educators & Coaches
+            Building Resilience For Life
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
-            We measure success not just by gold medals or perfect scores, but by the character, resilience, and happiness of every child who steps through our doors.
+          <p className="mt-4 text-base sm:text-xl text-pink-700 font-semibold leading-relaxed">
+            "{gymInfo.belief}"
+          </p>
+          <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            {gymInfo.vision}
           </p>
         </div>
 
@@ -63,8 +66,18 @@ export default function ValuesSection({ activeTheme }) {
           })}
         </div>
 
+        {/* Motto Callout Banner */}
+        <div className="mt-12 bg-pink-50 border border-pink-200 rounded-2xl p-6 sm:p-8 text-center max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg font-bold text-gray-900">
+            At Resilience, {gymInfo.motto.toLowerCase()}
+          </p>
+          <p className="mt-2 text-sm text-pink-700 font-medium">
+            Whether your gymnast is just beginning or pursuing competitive goals, we’re here to support them every step, jump, and handstand of the way.
+          </p>
+        </div>
+
         {/* Parent Testimonial Quote Banner */}
-        <div className="mt-16 bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl">
+        <div className="mt-12 bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl">
           <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
             <Quote className="w-12 h-12 text-pink-400 mx-auto opacity-80" />
             <p className="text-lg sm:text-xl md:text-2xl font-medium italic text-slate-100 leading-relaxed">
@@ -77,6 +90,10 @@ export default function ValuesSection({ activeTheme }) {
               <div className="text-xs text-slate-400">
                 Parent of 8-year-old Intermediate Gymnast
               </div>
+            </div>
+            <div className="pt-4 border-t border-white/10 flex items-center justify-center gap-2 text-pink-300 font-bold text-sm">
+              <Heart className="w-4 h-4 fill-pink-400 text-pink-400" />
+              <span>{gymInfo.tagline}</span>
             </div>
           </div>
         </div>
