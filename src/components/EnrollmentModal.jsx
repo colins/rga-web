@@ -1,0 +1,245 @@
+import React, { useState, useEffect } from 'react';
+import { X, CheckCircle2, Send, Sparkles, User, Mail, Phone, Calendar, Heart } from 'lucide-react';
+import { classes, gymInfo } from '../data/scheduleData';
+
+export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTrialMode }) {
+  const [formData, setFormData] = useState({
+    parentName: '',
+    email: '',
+    phone: '',
+    childName: '',
+    childAge: '',
+    classId: selectedClass ? selectedClass.id : classes[0].id,
+    preferredDayTime: '',
+    notes: '',
+    requestTrial: isTrialMode || false
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (selectedClass) {
+      setFormData((prev) => ({
+        ...prev,
+        classId: selectedClass.id
+      }));
+    }
+  }, [selectedClass]);
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      requestTrial: isTrialMode || false
+    }));
+  }, [isTrialMode]);
+
+  if (!isOpen) return null;
+
+  const currentClassObj = classes.find((c) => c.id === formData.classId) || classes[0];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm overflow-y-auto">
+      <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative my-8">
+        
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-5 right-5 p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {submitted ? (
+          /* Confirmation Message */
+          <div className="text-center py-8 space-y-4">
+            <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+              <CheckCircle2 className="w-10 h-10" />
+            </div>
+            <h3 className="text-2xl font-extrabold text-gray-900">
+              {formData.requestTrial ? 'Trial Request Received!' : 'Enrollment Request Received!'}
+            </h3>
+            <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+              Thank you, <strong className="text-gray-900">{formData.parentName}</strong>! Our front desk team at <strong className="text-pink-600">{gymInfo.name}</strong> will contact you at <strong className="text-gray-900">{formData.phone}</strong> or <strong className="text-gray-900">{formData.email}</strong> within 24 business hours to finalize enrollment for <strong className="text-gray-900">{formData.childName}</strong>.
+            </p>
+            <div className="pt-4">
+              <button
+                onClick={onClose}
+                className="font-bold text-sm px-6 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-xl shadow-lg transition-all"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        ) : (
+          /* Enrollment Form */
+          <div>
+            <div className="mb-6">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 text-pink-800 font-bold text-xs uppercase tracking-wider mb-2">
+                <Sparkles className="w-3.5 h-3.5" />
+                {formData.requestTrial ? 'Free Trial Request' : 'Class Enrollment'}
+              </div>
+              <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+                {formData.requestTrial ? 'Schedule a Free Trial Class' : 'Enroll Your Child at RGA'}
+              </h2>
+              <p className="text-xs text-gray-500 mt-1">
+                Fill out this quick form and our team will lock in your spot or trial time.
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              
+              {/* Program Selector */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                  Select Program / Class
+                </label>
+                <select
+                  value={formData.classId}
+                  onChange={(e) => setFormData({ ...formData, classId: e.target.value })}
+                  className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-300 rounded-xl text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                >
+                  {classes.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.name} ({c.ageRange}) — ${c.priceMonthly}/mo
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Class Summary Badge */}
+              <div className="bg-pink-50 p-3 rounded-xl border border-pink-200 text-xs text-pink-900 flex justify-between items-center">
+                <div>
+                  <span className="font-bold text-pink-950 block">{currentClassObj.name}</span>
+                  <span className="text-[11px] text-pink-700">{currentClassObj.durationMinutes} minutes • {currentClassObj.genderGroup}</span>
+                </div>
+                <div className="font-extrabold text-sm text-pink-900">
+                  ${currentClassObj.priceMonthly}/month
+                </div>
+              </div>
+
+              {/* Parent Info */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    Parent / Guardian Name *
+                  </label>
+                  <div className="relative">
+                    <User className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="Jane Doe"
+                      value={formData.parentName}
+                      onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
+                      className="w-full pl-9 pr-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    Phone Number *
+                  </label>
+                  <div className="relative">
+                    <Phone className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="tel"
+                      required
+                      placeholder="(303) 555-0199"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full pl-9 pr-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                  Email Address *
+                </label>
+                <div className="relative">
+                  <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="email"
+                    required
+                    placeholder="parent@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full pl-9 pr-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  />
+                </div>
+              </div>
+
+              {/* Child Info */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    Child's Name *
+                  </label>
+                  <div className="relative">
+                    <Heart className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="Emma Doe"
+                      value={formData.childName}
+                      onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
+                      className="w-full pl-9 pr-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    Child's Age / DOB *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. 7 years old"
+                    value={formData.childAge}
+                    onChange={(e) => setFormData({ ...formData, childAge: e.target.value })}
+                    className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  />
+                </div>
+              </div>
+
+              {/* Preferred Day & Time */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                  Preferred Day & Time Slot
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Tuesday 4:30 - 5:30 pm"
+                  value={formData.preferredDayTime}
+                  onChange={(e) => setFormData({ ...formData, preferredDayTime: e.target.value })}
+                  className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div className="pt-3">
+                <button
+                  type="submit"
+                  className="w-full font-extrabold text-sm py-3.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white shadow-lg shadow-pink-500/25 flex items-center justify-center gap-2 transition-all"
+                >
+                  <Send className="w-4 h-4" />
+                  {formData.requestTrial ? 'Submit Free Trial Request' : 'Submit Enrollment Request'}
+                </button>
+              </div>
+
+            </form>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+}
