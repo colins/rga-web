@@ -29,7 +29,7 @@ export default function HomePage({ activeTheme, onNavigate, onOpenEnroll, onOpen
       title: "Recreational Gymnastics",
       age: "Ages 5 & Up (Girls & Boys)",
       description: "Structured progressive training across all apparatuses—vault, bars, beam, floor, and rings. Fosters strength, agility, and lifelong love for movement.",
-      image: "https://images.unsplash.com/photo-1576490252381-c97ccb950043?auto=format&fit=crop&w=800&q=80",
+      image: "/images/class-girls-rec.webp",
       action: () => onNavigate('/classes'),
       buttonText: "Explore Classes"
     },
@@ -37,7 +37,7 @@ export default function HomePage({ activeTheme, onNavigate, onOpenEnroll, onOpen
       title: "Tots & Preschool",
       age: "Ages 18 Mo – 5 Years",
       description: "Playful introductory movement, motor skill coordination, foam pit exploration, and obstacle courses in a positive, confidence-building environment.",
-      image: "https://images.unsplash.com/photo-1655842556550-6809c404ce9c?auto=format&fit=crop&w=800&q=80",
+      image: "/images/class-preschool.webp",
       action: () => onNavigate('/classes'),
       buttonText: "Preschool Schedule"
     },
@@ -45,7 +45,7 @@ export default function HomePage({ activeTheme, onNavigate, onOpenEnroll, onOpen
       title: "GymNinjas Agility",
       age: "Ages 5 & Up",
       description: "High-octane agility training combining gymnastics tumbling, obstacle course navigation, parkour vaults, and body control challenges.",
-      image: "https://images.unsplash.com/photo-1655842556432-ece48a4f2c1a?auto=format&fit=crop&w=800&q=80",
+      image: "/images/class-gymninjas.webp",
       action: () => onNavigate('/classes'),
       buttonText: "Ninja Programs"
     },
@@ -53,7 +53,7 @@ export default function HomePage({ activeTheme, onNavigate, onOpenEnroll, onOpen
       title: "USAG Competitive Team",
       age: "Pre-Team & USAG Levels 2–10 / Xcel",
       description: "Dedicated pre-team Mighty Minis and USAG competitive gymnastics programs developing discipline, poise, character, and athletic excellence.",
-      image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80",
+      image: "/images/team-xcel.webp",
       action: () => onNavigate('/team'),
       buttonText: "Meet The Team"
     }
@@ -147,7 +147,7 @@ export default function HomePage({ activeTheme, onNavigate, onOpenEnroll, onOpen
                 <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-3xl blur-xl opacity-40"></div>
                 <div className="relative bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
                   <img
-                    src="https://images.unsplash.com/photo-1576490252381-c97ccb950043?auto=format&fit=crop&w=1000&q=80"
+                    src="/images/hero-gymnast.webp"
                     alt="Youth gymnast balance beam training at RGA"
                     className="w-full h-[400px] object-cover"
                   />

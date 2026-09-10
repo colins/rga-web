@@ -50,7 +50,7 @@ export default function AboutPage({ activeTheme }) {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
                 <img 
-                  src="https://images.unsplash.com/photo-1655842556563-2c28adb3fcc5?auto=format&fit=crop&w=800&q=80" 
+                  src="/images/value-confidence.webp" 
                   alt="Coach and young gymnasts at Resilience Gymnastics Academy"
                   className="w-full h-[360px] object-cover"
                 />

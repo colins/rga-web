@@ -96,6 +96,20 @@ Website for Resilience Gymnastics Academy (`rgagymnast.com`, formerly Gymnastics
 - [x] Updated `deploy.sh` to sync `pno-sept19.png` and flushed SiteGround dynamic cache.
 - [x] Verified live deployment at `https://colins110.sg-host.com/events` and image asset at `https://colins110.sg-host.com/images/pno-sept19.png`.
 
+### Step 11: Original AI Image Strategy & Asset Pipeline
+- [x] Created comprehensive Midjourney v6.1 & Flux.1 prompt engineering cookbook at `.prompts/image-generation-cookbook.md` with 19 tailored prompts for hero, values, classes, events, and USAG competitive tracks.
+- [x] Built automated image optimization script `scripts/optimize_images.py` that crops, resamples, and compresses renders into lightweight WebP format.
+- [x] Migrated all remote stock photo URLs across `src/data/scheduleData.js`, `src/pages/HomePage.jsx`, `src/pages/AboutPage.jsx`, `src/pages/TeamPage.jsx`, and `src/components/Hero.jsx` to local `/images/*.webp` paths.
+- [x] Populated and verified all 19 local WebP asset slots in `public/images/`.
+- [x] Validated production build with `npm run build` with zero errors.
+
+### Step 12: Decoupled 3 Distinct Programs & Removed Pathway Flowchart (`.prompts/team.md`)
+- [x] Removed the sequential flowchart/pathway diagram and branching connectors from `/team`.
+- [x] Replaced the flowchart with a clean **Program Offerings** overview presenting Mighty Minis Pre-Team, USAG Xcel, and USAG Developmental Program (DP) side-by-side.
+- [x] Balanced and toned down copy at the top of `/team` to read naturally and professionally without repetitive "distinct / independent programs" wording.
+- [x] Updated `scheduleData.js` pre-team and DP descriptions to eliminate pathway/bridge terminology between programs.
+- [x] Verified production build with `npm run build`.
+
 ---
 
 ## Locked Components (Do Not Modify Without Direct Request)

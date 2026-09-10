@@ -39,7 +39,7 @@ export const values = [
     icon: "Sparkles",
     description: "At Resilience Gymnastics Academy, we believe that true strength comes from more than just muscles — it comes from confidence, character, and community.",
     color: "from-pink-500 to-rose-500",
-    image: "https://images.unsplash.com/photo-1655842556563-2c28adb3fcc5?auto=format&fit=crop&w=800&q=80"
+    image: "/images/value-confidence.webp"
   },
   {
     id: "effort-perfection",
@@ -47,7 +47,7 @@ export const values = [
     icon: "HeartPulse",
     description: "We celebrate hard work, determination, and trying your best. Every practice and conversation focuses on dedication over flawless results.",
     color: "from-purple-500 to-indigo-500",
-    image: "https://images.unsplash.com/photo-1655842556539-db2d2099ded1?auto=format&fit=crop&w=800&q=80"
+    image: "/images/value-effort.webp"
   },
   {
     id: "courage-fear",
@@ -55,7 +55,7 @@ export const values = [
     icon: "ShieldCheck",
     description: "Creating a safe, positive, and empowering environment where athletes are encouraged to challenge themselves every step, jump, and handstand of the way.",
     color: "from-amber-500 to-orange-500",
-    image: "https://images.unsplash.com/photo-1576490252381-c97ccb950043?auto=format&fit=crop&w=800&q=80"
+    image: "/images/value-courage.webp"
   },
   {
     id: "growth-comparison",
@@ -63,7 +63,7 @@ export const values = [
     icon: "Users",
     description: "Gymnastics should build resilience for life — teaching discipline, teamwork, and self-belief while focusing on each child's personal progress.",
     color: "from-teal-500 to-emerald-500",
-    image: "https://images.unsplash.com/photo-1655842556730-472e7315caa0?auto=format&fit=crop&w=800&q=80"
+    image: "/images/value-growth.webp"
   }
 ];
 
@@ -94,7 +94,7 @@ export const classes = [
       Saturday: []
     },
     highlights: ["Parent-Guided Bonding", "Early Coordination & Balance", "Soft Foam Pit Exploration"],
-    image: "https://images.unsplash.com/photo-1655842556550-6809c404ce9c?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-parent-tot.webp"
   },
   {
     id: "preschool",
@@ -114,7 +114,7 @@ export const classes = [
       Saturday: ["9:00 - 10:00 am", "10:00 - 11:00 am"]
     },
     highlights: ["Motor Skill Development", "Basic Trampoline & Foam Pit", "Obstacle Courses & Stations"],
-    image: "https://images.unsplash.com/photo-1655842556550-6809c404ce9c?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-preschool.webp"
   },
   {
     id: "gymninjas",
@@ -134,7 +134,7 @@ export const classes = [
       Saturday: []
     },
     highlights: ["Obstacle Course Racing", "Vaulting & Wall Climbs", "Safe Landing & Agility"],
-    image: "https://images.unsplash.com/photo-1655842556432-ece48a4f2c1a?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-gymninjas.webp"
   },
   {
     id: "girls-beginner",
@@ -154,7 +154,7 @@ export const classes = [
       Saturday: ["9:00 - 10:00 am", "10:00 - 11:00 am"]
     },
     highlights: ["Cartwheels & Handstands", "Beam Balance & Turns", "Bars Pullover & Vault Fundamentals"],
-    image: "https://images.unsplash.com/photo-1576490252381-c97ccb950043?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-girls-rec.webp"
   },
   {
     id: "girls-intermediate",
@@ -174,7 +174,7 @@ export const classes = [
       Saturday: []
     },
     highlights: ["Roundoffs & Handspring Prep", "Beam Handstands & Jumps", "Bar Kip & Cast Progressions"],
-    image: "https://images.unsplash.com/photo-1655842556539-db2d2099ded1?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-girls-intermediate.webp"
   },
   {
     id: "girls-advanced",
@@ -194,7 +194,7 @@ export const classes = [
       Saturday: ["10:00 - 11:30 am"]
     },
     highlights: ["90-Minute Training Session", "Back Handspring Connections", "Advanced Bar Flight & Vault"],
-    image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-girls-advanced.webp"
   },
   {
     id: "boys-beginner",
@@ -214,7 +214,7 @@ export const classes = [
       Saturday: ["9:00 - 10:00 am"]
     },
     highlights: ["Rings & Parallel Bars", "Upper Body Power", "Vaulting & Floor Tumbling"],
-    image: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-boys-beginner.webp"
   },
   {
     id: "boys-intermediate",
@@ -234,7 +234,7 @@ export const classes = [
       Saturday: ["9:00 - 10:00 am"]
     },
     highlights: ["Ring Muscle Progressions", "Parallel Bar Swings", "Floor Tumbling Combinations"],
-    image: "https://images.unsplash.com/photo-1642932163549-3af44da6017f?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-boys-intermediate.webp"
   },
   {
     id: "boys-advanced",
@@ -254,7 +254,7 @@ export const classes = [
       Saturday: ["10:00 - 11:30 am"]
     },
     highlights: ["90-Minute Advanced Practice", "High Bar Giants & Swings", "Advanced Ring & Vault Skills"],
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+    image: "/images/class-boys-advanced.webp"
   }
 ];
 
@@ -265,6 +265,7 @@ export const eventsData = {
     nextEventDate: "Saturday, September 19, 2026",
     time: "5:00 PM – 9:00 PM",
     flyerImage: "/images/pno-sept19.png",
+    image: "/images/event-pno.webp",
     description: "Need a few hours to yourself? Let us keep the kids entertained while you enjoy a night out! Our Parents' Night Out is packed with active play, pizza, crafts, group games, and the possibility of a movie later in the evening for those who need a less active environment—giving your child a fun-filled evening with friends at Resilience Gymnastics Academy!",
     timeline: [
       { time: "5:00 – 6:30 PM", activity: "Open Gym & Supervised Play" },
@@ -298,6 +299,7 @@ export const eventsData = {
     title: "Gymnastics Birthday Parties 🎂",
     tagline: "Celebrate your child's special day with high-energy fun at RGA!",
     price: "$250",
+    image: "/images/event-birthday.webp",
     duration: "1.5 Hours Private Party",
     highlights: [
       "100% Private Gym Access — your group has the entire gym facility to themselves!",
@@ -329,17 +331,18 @@ export const teamData = {
   preTeam: {
     id: "mighty-minis",
     name: "Mighty Minis Pre-Team",
-    badge: "Foundational Pre-Team Bridge",
+    badge: "Foundational Pre-Team Program",
+    image: "/images/team-mighty-minis.webp",
     ageRange: "Ages 4 - 7 (By Coach Recommendation or Evaluation)",
     schedule: "90 Minutes — 2x per Week (3 Hours Total)",
-    tagline: "The Bridge From Recreational to Competitive Gymnastics",
-    description: "Mighty Minis is RGA's foundational pre-team program designed for young gymnasts who show natural enthusiasm, physical coordination, and readiness for a more structured training environment. This program prepares athletes for either the Xcel or DP competitive track.",
+    tagline: "Structured Pre-Team Development for Young Athletes",
+    description: "Mighty Minis is RGA's foundational pre-team program designed for young gymnasts (ages 4–7) who show natural enthusiasm, physical coordination, and readiness for a structured training environment focused on fundamental technique, strength, and body positions.",
     highlights: [
-      "Bridges the gap between recreational classes and competitive team expectations",
+      "Accelerated foundational skill development beyond recreational classes",
       "Develops strong technical foundations, flexibility, core conditioning, and work ethic",
       "Introduces skill progressions, form discipline, routines, and body positions",
       "Builds team habits: goal setting, perseverance, accountability, and teammate support",
-      "Evaluates gymnast readiness for entry into either Xcel Bronze or DP Compulsory"
+      "Individualized coach evaluations and progressive skill benchmarks"
     ]
   },
 
@@ -347,6 +350,7 @@ export const teamData = {
     id: "xcel-program",
     name: "USA Gymnastics Xcel Program",
     badge: "Flexible Competitive Track",
+    image: "/images/team-xcel.webp",
     subtitle: "Competitive Excellence with Flexibility for Multi-Sport & Well-Rounded Athletes",
     description: "Our USAG Xcel Program provides an authentic competitive gymnastics experience designed for gymnasts who desire high achievement without the overwhelming time commitment of traditional DP. Athletes compete in sanctioned invitationals across Colorado with customized routines tailored to their strengths and personalities.",
     weeklyHours: "6 – 12 Hours / Week",
@@ -397,11 +401,12 @@ export const teamData = {
     id: "dp-program",
     name: "USA Gymnastics Developmental Program (DP)",
     badge: "Traditional USAG Track",
-    subtitle: "A Sequential Level Progression from Compulsory Mastery to Advanced Optional & Collegiate Pathways",
-    description: "Formerly known as the Junior Olympic (J.O.) program, the Developmental Program is USA Gymnastics' premier sequential pathway. Athletes progress step-by-step: first mastering standardized Compulsory routines (Levels 2–5) to build an unbreakable foundation of technique, before graduating to personalized Optional routines (Levels 6–10) and collegiate (NCAA) competition.",
+    image: "/images/team-dp.webp",
+    subtitle: "A Sequential Level Progression from Compulsory Mastery to Advanced Optional & Collegiate Opportunities",
+    description: "Formerly known as the Junior Olympic (J.O.) program, the Developmental Program is USA Gymnastics' premier competitive program. Within DP, athletes progress step-by-step: first mastering standardized Compulsory routines (Levels 2–5) to build an unbreakable foundation of technique, before graduating to personalized Optional routines (Levels 6–10) and collegiate (NCAA) competition.",
     weeklyHours: "9 – 20+ Hours / Week",
-    levelsOffered: "Compulsory (Levels 2–5) → Optional (Levels 6–10) → Collegiate / NCAA",
-    progressionNote: "DP is a progressive pathway: gymnasts start in Compulsory to master foundational technique on each event. Once compulsory routines and mobility scores are mastered, athletes advance to the Optional program.",
+    levelsOffered: "Compulsory (Levels 2–5) & Optional (Levels 6–10)",
+    progressionNote: "Within the DP program, gymnasts start in Compulsory to master foundational technique on each event. Once compulsory routines and mobility scores are achieved, athletes advance to the Optional program.",
     strengths: [
       "Structured level-by-level progression (Compulsory Levels 2–5 into Optional Levels 6–10)",
       "Standardized national curriculum building flawless technique, body alignment, and discipline",
@@ -513,42 +518,42 @@ export const teamData = {
 
 export const stockPhotos = [
   {
-    url: "https://images.unsplash.com/photo-1576490252381-c97ccb950043?auto=format&fit=crop&w=800&q=80",
+    url: "/images/class-girls-rec.webp",
     title: "Youth Balance Beam & Focus",
     category: "Girls Rec & USAG"
   },
   {
-    url: "https://images.unsplash.com/photo-1655842556550-6809c404ce9c?auto=format&fit=crop&w=800&q=80",
+    url: "/images/class-preschool.webp",
     title: "Parent-Tot & Preschool Movement",
     category: "Tots & Preschool"
   },
   {
-    url: "https://images.unsplash.com/photo-1655842556432-ece48a4f2c1a?auto=format&fit=crop&w=800&q=80",
+    url: "/images/class-gymninjas.webp",
     title: "GymNinjas Trampoline & Obstacle Vault",
     category: "Ninjas & Parkour"
   },
   {
-    url: "https://images.unsplash.com/photo-1642932163549-3af44da6017f?auto=format&fit=crop&w=800&q=80",
+    url: "/images/class-boys-intermediate.webp",
     title: "Boys Gymnastics & Vaulting Progressions",
     category: "Boys Rec"
   },
   {
-    url: "https://images.unsplash.com/photo-1655842556539-db2d2099ded1?auto=format&fit=crop&w=800&q=80",
+    url: "/images/class-girls-intermediate.webp",
     title: "Floor Tumbling & Group Practice",
     category: "Tumbling & Rec"
   },
   {
-    url: "https://images.unsplash.com/photo-1655842556563-2c28adb3fcc5?auto=format&fit=crop&w=800&q=80",
+    url: "/images/value-confidence.webp",
     title: "Positive Coaching & Team Encouragement",
     category: "USAG & Team"
   },
   {
-    url: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80",
+    url: "/images/class-girls-advanced.webp",
     title: "Competitive USAG Beam Routine Technique",
     category: "USAG Competitive"
   },
   {
-    url: "https://images.unsplash.com/photo-1655842556730-472e7315caa0?auto=format&fit=crop&w=800&q=80",
+    url: "/images/value-growth.webp",
     title: "Youth Gymnasts Celebrating Progress",
     category: "Team Spirit"
   }

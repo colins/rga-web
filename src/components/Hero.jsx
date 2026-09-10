@@ -78,7 +78,7 @@ export default function Hero({ activeTheme, onOpenEnroll, onOpenTrial }) {
               
               <div className="relative bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
                 <img
-                  src="https://images.unsplash.com/photo-1576490252381-c97ccb950043?auto=format&fit=crop&w=1000&q=80"
+                  src="/images/hero-gymnast.webp"
                   alt="Young gymnast practicing on balance beam at RGA"
                   className="w-full h-[420px] object-cover"
                 />

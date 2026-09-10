@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Trophy, Award, Sparkles, Heart, ShieldCheck, CheckCircle2, 
-  ArrowRight, Mail, Phone, Calendar, Users, Star, ArrowDown,
-  GitBranch, Check, HelpCircle, Send, User, ChevronRight, Activity, Zap
+  ArrowRight, Mail, Phone, Calendar, Users, Star,
+  Check, HelpCircle, Send, User, ChevronRight, Activity, Zap
 } from 'lucide-react';
 import { teamData, gymInfo } from '../data/scheduleData';
 
@@ -61,15 +61,15 @@ export default function TeamPage({ activeTheme }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl mx-auto space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-pink-400/30 text-xs font-bold text-pink-200 uppercase tracking-widest">
             <Trophy className="w-4 h-4 text-pink-300" />
-            USA Gymnastics Competitive & Pre-Team Pathways
+            USA Gymnastics Pre-Team & Competitive Programs
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-white">
-            Resilience Competitive & Pre-Team Program
+            Resilience Competitive & Pre-Team Programs
           </h1>
 
           <p className="text-base sm:text-lg text-pink-100/90 leading-relaxed max-w-3xl mx-auto font-normal">
-            Developing champions of character, courage, and excellence. From our foundational <strong>Mighty Minis Pre-Team</strong> to our <strong>USAG Xcel</strong> and <strong>Developmental Program (DP)</strong> teams, we provide safe, positive, and empowering coaching for every competitive athlete.
+            Developing champions of character, courage, and excellence. From our foundational <strong>Mighty Minis Pre-Team</strong> to our <strong>USAG Xcel</strong> and <strong>Developmental Program (DP)</strong> teams, we provide positive, empowering coaching tailored to every athlete.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
@@ -82,11 +82,11 @@ export default function TeamPage({ activeTheme }) {
             </button>
 
             <button
-              onClick={() => scrollToId('pathway-flow')}
+              onClick={() => scrollToId('programs')}
               className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 backdrop-blur-sm transition-all"
             >
-              <GitBranch className="w-4 h-4 text-pink-300" />
-              Explore Pathway Flowchart
+              <Trophy className="w-4 h-4 text-pink-300" />
+              Explore Programs
             </button>
           </div>
 
@@ -116,7 +116,7 @@ export default function TeamPage({ activeTheme }) {
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl mx-auto">
             Competitive gymnastics at Resilience Gymnastics Academy is evaluation-based and designed for athletes who demonstrate physical readiness, coachability, and desire for an increased training commitment. 
             <strong className="text-gray-900 font-semibold block mt-1">
-              Competitive team is an exciting potential pathway — not a mandatory requirement for every recreational gymnast.
+              Competitive team is an exciting opportunity for athletes ready for more — not a mandatory requirement for recreational gymnasts.
             </strong>
           </p>
 
@@ -137,171 +137,203 @@ export default function TeamPage({ activeTheme }) {
         </div>
       </section>
 
-      {/* 3. INTERACTIVE VISUAL PATHWAY FLOWCHART (Pre-Team -> Xcel or DP) */}
-      <section id="pathway-flow" className="py-20 bg-gray-50 scroll-mt-20">
+      {/* 3. PROGRAMS OVERVIEW */}
+      <section id="programs" className="py-20 bg-gray-50 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-100 text-pink-800 font-bold text-xs uppercase tracking-wider mb-3">
-              <GitBranch className="w-3.5 h-3.5" /> Structured Progression
+              <Trophy className="w-3.5 h-3.5 text-pink-600" /> Program Offerings
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
-              The Resilience Athlete Pathway
+              Choose the Right Fit for Your Athlete
             </h2>
             <p className="mt-3 text-base text-gray-600">
-              How young gymnasts transition from recreational beginnings through our foundational pre-team into either the USAG Xcel or DP competitive tracks.
+              We offer three programs tailored to different ages, time commitments, and competitive goals.
             </p>
           </div>
 
-          {/* Pathway Flow Diagram */}
-          <div className="relative max-w-5xl mx-auto space-y-10">
+          {/* 3 Program Cards Side by Side */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* Step 1: Entry / Recreational */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm max-w-xl mx-auto text-center relative z-10">
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                Step 1: Recreational Foundations
-              </span>
-              <h3 className="text-xl font-bold text-gray-900 mt-2">
-                Parent-Tot, Preschool, Rec Girls & Boys, GymNinjas
-              </h3>
-              <p className="text-xs text-gray-600 mt-1">
-                Developing spatial coordination, strength, discipline, and joy in gymnastics fundamentals (1 - 1.5 hrs/week).
-              </p>
-            </div>
+            {/* Card 1: Mighty Minis Pre-Team */}
+            <div className="bg-white rounded-3xl p-8 border-2 border-pink-200 shadow-sm hover:shadow-xl hover:border-pink-500 transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-black text-pink-700 bg-pink-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                    Pre-Team
+                  </span>
+                  <span className="text-xs font-bold text-gray-500">
+                    Ages 4 – 7
+                  </span>
+                </div>
 
-            {/* Down Connector */}
-            <div className="flex flex-col items-center justify-center -my-4 relative z-0">
-              <div className="w-0.5 h-10 bg-pink-300"></div>
-              <div className="w-7 h-7 rounded-full bg-pink-600 text-white flex items-center justify-center text-xs shadow-md">
-                <ArrowDown className="w-4 h-4" />
-              </div>
-            </div>
-
-            {/* Step 2: Foundational Pre-Team (MIGHTY MINIS) */}
-            <div className="bg-gradient-to-r from-pink-500 via-pink-600 to-purple-600 text-white rounded-3xl p-8 shadow-xl max-w-2xl mx-auto text-center relative z-10 border-2 border-white/30">
-              <span className="text-[11px] font-black uppercase tracking-widest bg-white/20 px-3.5 py-1 rounded-full text-pink-100">
-                Step 2: Foundational Pre-Team Bridge
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black mt-2 text-white">
-                Mighty Minis Pre-Team
-              </h3>
-              <p className="text-sm text-pink-100 mt-2 max-w-lg mx-auto">
-                Ages 4–7 • 90 Minutes, 2x per week. Bridges recreational gymnastics to competitive team expectations through technical conditioning, body line discipline, and team habits.
-              </p>
-              <div className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-white bg-white/20 px-4 py-2 rounded-xl">
-                <span>Placement by Senior Coach Evaluation or Recommendation</span>
-              </div>
-            </div>
-
-            {/* Branching Fork Visual */}
-            <div className="flex flex-col items-center justify-center -my-4 relative z-0">
-              <div className="w-0.5 h-8 bg-pink-400"></div>
-              <div className="px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-black uppercase tracking-widest shadow-md">
-                Athletic Branching: Choose Your Track
-              </div>
-              <div className="hidden sm:block w-3/4 h-6 border-t-2 border-l-2 border-r-2 border-pink-400 rounded-t-2xl mt-3"></div>
-            </div>
-
-            {/* Step 3: Two Distinct Competitive Tracks Side by Side */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-              
-              {/* Branch A: XCEL */}
-              <div className="bg-white rounded-3xl p-8 border-2 border-pink-300 shadow-md flex flex-col justify-between hover:shadow-xl hover:border-pink-500 transition-all">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-pink-700 bg-pink-100 px-3 py-1 rounded-full uppercase tracking-wider">
-                      Branch A: USAG Xcel
-                    </span>
-                    <span className="text-xs font-semibold text-gray-500">
-                      6 – 12 Hours / Week
-                    </span>
+                <div>
+                  <h3 className="text-2xl font-black text-gray-900 group-hover:text-pink-600 transition-colors">
+                    {preTeam.name}
+                  </h3>
+                  <div className="text-xs font-bold text-pink-600 mt-1">
+                    {preTeam.schedule}
                   </div>
+                </div>
 
-                  <h4 className="text-2xl font-black text-gray-900">
-                    USA Gymnastics Xcel Track
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    Designed for athletes wanting authentic competition and individualized routines with the flexibility to balance other sports, music, or demanding schoolwork.
-                  </p>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  Our foundational pre-team program for young gymnasts showing natural enthusiasm, coordination, and readiness for structured training beyond recreational classes.
+                </p>
 
-                  <div className="bg-pink-50/60 rounded-2xl p-4 border border-pink-100 space-y-2">
-                    <span className="text-xs font-bold text-pink-900 uppercase tracking-wider block">
-                      4 Progression Tiers:
-                    </span>
-                    <div className="grid grid-cols-2 gap-2 text-xs font-semibold text-gray-700">
-                      <div className="bg-white p-2 rounded-lg border border-pink-200 text-center">🥉 Bronze</div>
-                      <div className="bg-white p-2 rounded-lg border border-pink-200 text-center">🥈 Silver</div>
-                      <div className="bg-white p-2 rounded-lg border border-pink-200 text-center">🥇 Gold</div>
-                      <div className="bg-white p-2 rounded-lg border border-pink-200 text-center">💎 Platinum</div>
+                <div className="bg-pink-50/70 rounded-2xl p-4 border border-pink-100 space-y-2">
+                  <span className="text-[11px] font-bold text-pink-900 uppercase tracking-wider block">
+                    Program Highlights:
+                  </span>
+                  <div className="space-y-1.5 text-xs text-gray-700">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-pink-600 shrink-0" />
+                      <span>Technique, posture & flexibility</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-pink-600 shrink-0" />
+                      <span>Core conditioning & team habits</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-pink-600 shrink-0" />
+                      <span>Coach evaluation entry</span>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="pt-6">
-                  <button
-                    onClick={() => scrollToId('xcel-section')}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-md shadow-pink-500/20 transition-all"
-                  >
-                    View Xcel Tier Details
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+              <div className="pt-6">
+                <button
+                  onClick={() => scrollToId('mighty-minis-section')}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-md shadow-pink-500/20 transition-all"
+                >
+                  Explore Mighty Minis
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: USAG Xcel Program */}
+            <div className="bg-white rounded-3xl p-8 border-2 border-rose-200 shadow-sm hover:shadow-xl hover:border-rose-500 transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-black text-rose-700 bg-rose-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                    USAG Xcel
+                  </span>
+                  <span className="text-xs font-bold text-gray-500">
+                    6 – 12 Hrs / Wk
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-black text-gray-900 group-hover:text-rose-600 transition-colors">
+                    USA Gymnastics Xcel
+                  </h3>
+                  <div className="text-xs font-bold text-rose-600 mt-1">
+                    4 Tiers: Bronze • Silver • Gold • Platinum
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  Authentic competitive gymnastics with customized routines designed for athletes desiring competition while maintaining flexibility for multi-sport or academic balance.
+                </p>
+
+                <div className="bg-rose-50/70 rounded-2xl p-4 border border-rose-100 space-y-2">
+                  <span className="text-[11px] font-bold text-rose-900 uppercase tracking-wider block">
+                    Program Highlights:
+                  </span>
+                  <div className="space-y-1.5 text-xs text-gray-700">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      <span>Customized choreography per athlete</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      <span>Colorado state & regional meets</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      <span>Flexible training schedule</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Branch B: DP */}
-              <div className="bg-white rounded-3xl p-8 border-2 border-purple-300 shadow-md flex flex-col justify-between hover:shadow-xl hover:border-purple-500 transition-all">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-purple-700 bg-purple-100 px-3 py-1 rounded-full uppercase tracking-wider">
-                      Branch B: USAG DP
-                    </span>
-                    <span className="text-xs font-semibold text-gray-500">
-                      9 – 20+ Hours / Week
-                    </span>
-                  </div>
+              <div className="pt-6">
+                <button
+                  onClick={() => scrollToId('xcel-section')}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-md shadow-rose-500/20 transition-all"
+                >
+                  Explore Xcel Program
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
 
-                  <h4 className="text-2xl font-black text-gray-900">
+            {/* Card 3: USAG Developmental Program (DP) */}
+            <div className="bg-white rounded-3xl p-8 border-2 border-purple-200 shadow-sm hover:shadow-xl hover:border-purple-500 transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-black text-purple-700 bg-purple-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                    USAG Developmental (DP)
+                  </span>
+                  <span className="text-xs font-bold text-gray-500">
+                    9 – 20+ Hrs / Wk
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-black text-gray-900 group-hover:text-purple-600 transition-colors">
                     Development Program (DP)
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    The traditional USA Gymnastics curriculum designed as a rigorous sequential progression: athletes start in Compulsory to build flawless technique before advancing to personalized Optionals.
-                  </p>
-
-                  <div className="bg-purple-50/60 rounded-2xl p-4 border border-purple-100 space-y-2">
-                    <span className="text-xs font-bold text-purple-900 uppercase tracking-wider block">
-                      Sequential Level Progression:
-                    </span>
-                    <div className="flex flex-col sm:flex-row items-center gap-2 text-xs font-bold text-gray-700">
-                      <div className="bg-white p-2.5 rounded-lg border border-purple-200 text-center w-full sm:w-1/2">
-                        <span className="text-[10px] text-purple-600 block uppercase font-black">Step 1: Compulsory</span>
-                        Levels 2 – 5
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-purple-500 shrink-0 hidden sm:block" />
-                      <ArrowDown className="w-4 h-4 text-purple-500 shrink-0 sm:hidden" />
-                      <div className="bg-white p-2.5 rounded-lg border border-purple-200 text-center w-full sm:w-1/2">
-                        <span className="text-[10px] text-purple-600 block uppercase font-black">Step 2: Optional</span>
-                        Levels 6 – 10
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-purple-800 font-medium text-center pt-1">
-                      Master standardized compulsory routines → Qualify for personalized optional routines & NCAA prep
-                    </p>
+                  </h3>
+                  <div className="text-xs font-bold text-purple-600 mt-1">
+                    Compulsory (L2–5) & Optional (L6–10)
                   </div>
                 </div>
 
-                <div className="pt-6">
-                  <button
-                    onClick={() => scrollToId('dp-section')}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 transition-all"
-                  >
-                    View DP Progression Details
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  USA Gymnastics' premier traditional program. Builds technical perfection through standardized compulsory routines, progressing to high-difficulty optionals and collegiate preparation.
+                </p>
+
+                <div className="bg-purple-50/70 rounded-2xl p-4 border border-purple-100 space-y-2">
+                  <span className="text-[11px] font-bold text-purple-900 uppercase tracking-wider block">
+                    Program Highlights:
+                  </span>
+                  <div className="space-y-1.5 text-xs text-gray-700">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                      <span>National standardized curriculum</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                      <span>Elite technical development</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                      <span>NCAA & championship opportunities</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              <div className="pt-6">
+                <button
+                  onClick={() => scrollToId('dp-section')}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 transition-all"
+                >
+                  Explore DP Program
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
+          </div>
+
+          {/* Program Placement Callout */}
+          <div className="mt-12 bg-white rounded-2xl p-6 border border-gray-200 text-center max-w-3xl mx-auto shadow-sm">
+            <p className="text-xs sm:text-sm text-gray-600">
+              <strong className="text-gray-900">Evaluation & Placement:</strong> Our coaching staff provides personalized skill evaluations to help families determine the best fit for their gymnast's readiness, goals, and schedule.
+            </p>
           </div>
 
         </div>
@@ -372,7 +404,7 @@ export default function TeamPage({ activeTheme }) {
               <div className="lg:col-span-5">
                 <div className="rounded-2xl overflow-hidden shadow-xl border-2 border-white relative group">
                   <img
-                    src="https://images.unsplash.com/photo-1655842556550-6809c404ce9c?auto=format&fit=crop&w=800&q=80"
+                    src="/images/team-mighty-minis.webp"
                     alt="Young gymnast in pre-team training at RGA"
                     className="w-full h-[380px] object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -577,7 +609,7 @@ export default function TeamPage({ activeTheme }) {
                   {/* Advancement Transition Box */}
                   <div className="p-4 rounded-2xl bg-white border border-purple-200 shadow-xs mb-6">
                     <span className="text-xs font-bold text-purple-900 block mb-1">
-                      {idx === 0 ? "🚀 Advancement to Optionals:" : "🎓 Collegiate & Championship Pathway:"}
+                      {idx === 0 ? "🚀 Advancement to Optionals:" : "🎓 Collegiate & Championship Opportunities:"}
                     </span>
                     <p className="text-xs text-purple-950 font-medium leading-relaxed">
                       {division.advancementCriteria}
@@ -617,7 +649,7 @@ export default function TeamPage({ activeTheme }) {
             ))}
           </div>
 
-          {/* Collegiate Pathway Callout (from 5280 Gymnastics) */}
+          {/* Collegiate Opportunities Callout (from 5280 Gymnastics) */}
           <div className="bg-purple-900 text-white rounded-3xl p-8 sm:p-10 text-center space-y-4">
             <span className="text-xs font-bold text-pink-300 uppercase tracking-widest bg-white/10 px-3.5 py-1 rounded-full border border-white/20">
               Collegiate Gymnastics Trajectory
@@ -642,8 +674,8 @@ export default function TeamPage({ activeTheme }) {
         </div>
       </section>
 
-      {/* 7. SIDE-BY-SIDE PATHWAY COMPARISON MATRIX */}
-      <section className="py-20 bg-gray-50 border-t border-gray-200">
+      {/* 7. SIDE-BY-SIDE PROGRAM COMPARISON MATRIX */}
+      <section id="compare-table" className="py-20 bg-gray-50 border-t border-gray-200 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -651,10 +683,10 @@ export default function TeamPage({ activeTheme }) {
               Side-by-Side Comparison
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mt-3">
-              Which Track Fits Your Athlete Best?
+              Which Program Fits Your Athlete Best?
             </h2>
             <p className="mt-3 text-sm sm:text-base text-gray-600">
-              Compare training hours, competition scope, flexibility, and choreography requirements.
+              Compare training hours, competition scope, flexibility, and routine format across all three programs.
             </p>
           </div>
 
@@ -665,7 +697,7 @@ export default function TeamPage({ activeTheme }) {
                   <tr className="bg-slate-900 text-white">
                     <th className="p-4 sm:p-5 font-black uppercase tracking-wider text-xs w-1/4">Feature / Dimension</th>
                     <th className="p-4 sm:p-5 font-black uppercase tracking-wider text-xs text-pink-300 w-1/4">Mighty Minis Pre-Team</th>
-                    <th className="p-4 sm:p-5 font-black uppercase tracking-wider text-xs text-pink-400 w-1/4">USA Gymnastics Xcel Track</th>
+                    <th className="p-4 sm:p-5 font-black uppercase tracking-wider text-xs text-pink-400 w-1/4">USA Gymnastics Xcel Program</th>
                     <th className="p-4 sm:p-5 font-black uppercase tracking-wider text-xs text-purple-300 w-1/4">Development Program (DP)</th>
                   </tr>
                 </thead>
