@@ -46,6 +46,56 @@ Website for Resilience Gymnastics Academy (`rgagymnast.com`, formerly Gymnastics
 - [x] Verified build cleanly with `npm run build` (zero errors).
 - [x] Deployed updated build to SiteGround via SFTP using `./deploy.sh` and verified live endpoint at `https://colins110.sg-host.com`.
 
+### Step 6: Comprehensive Competitive & Pre-Team Page (`/team`)
+- [x] Executed `.prompts/team.md` specification.
+- [x] Implemented foundational pre-team **Mighty Minis** (Ages 4–7, 90 min 2x/week, senior coach evaluation bridge).
+- [x] Implemented USA Gymnastics **Xcel Program** with 4 distinct tiers:
+  - **Bronze**: Entry competitive, choreographed routines, presentation emphasis
+  - **Silver**: Developing competitive, advancing difficulty and precision
+  - **Gold**: Intermediate competitive, customized choreography, flight elements
+  - **Platinum**: Advanced competitive, twisting passes, complex releases, high school/collegiate exhibition
+- [x] Implemented USA Gymnastics **Developmental Program (DP)** structured as a sequential level progression (inspired by 5280 Gymnastics):
+  - **Stage 1: Compulsory Program (Levels 2–5)**: Standardized national routines, body line alignment, technical execution, and USA Gymnastics mobility scores
+  - **Advancement Milestone**: Qualification bridge from compulsory fundamentals to personalized optional routines
+  - **Stage 2: Optional Program (Levels 6–10)**: Custom choreography showcasing unique talents, high-difficulty flight, state/regional/national competition, and NCAA collegiate gymnastics recruitment pathway
+- [x] Designed visual interactive pathway flowchart: Recreational $\rightarrow$ Mighty Minis Pre-Team $\rightarrow$ Branching into Xcel Track vs. DP Progressive Track (Compulsory L2–5 $\rightarrow$ Optional L6–10 $\rightarrow$ Collegiate).
+- [x] Designed responsive side-by-side comparison matrix (weekly hours, routine format, competition travel scope, schedule flexibility, ideal athlete goals).
+- [x] Added embedded **Team Evaluation Request Form** with interactive submission state and direct front desk contact links.
+- [x] Verified production build (`npm run build`) with zero errors.
+- [x] Deployed updated build to SiteGround via SFTP using `./deploy.sh` and verified live endpoint at `https://colins110.sg-host.com/team`.
+
+### Step 7: Favicon Integration & Deployment Automation
+- [x] Extracted high-resolution official logo favicon directly from `https://rgagymnast.com/`.
+- [x] Generated `public/favicon.ico`, `public/favicon.png`, and `public/apple-touch-icon.png` (180x180).
+- [x] Configured `<link rel="icon">` and `<link rel="apple-touch-icon">` in `index.html`.
+- [x] Updated `deploy.sh` to automatically upload root favicon assets and invalidate SiteGround dynamic cache on every deploy.
+- [x] Verified live favicon delivery at `https://colins110.sg-host.com/favicon.ico` (200 OK) and browser metadata.
+
+### Step 8: Official Gymnast Beam Background Image Integration
+- [x] Downloaded official high-resolution balance beam gymnast photo (`gymnast+beam+1447+web.webp`) directly from `https://rgagymnast.com/` into `public/images/gymnast-beam.webp`.
+- [x] Updated `teamData.heroImage` in `src/data/scheduleData.js`.
+- [x] Integrated the background into `/team` hero and evaluation form in `src/pages/TeamPage.jsx` with calibrated brand gradient overlays.
+- [x] Updated `deploy.sh` to sync `images/` directory and purged SiteGround cache.
+- [x] Verified live deployment at `https://colins110.sg-host.com/team`.
+
+### Step 9: Published Schedule Flyer on Classes Page (`.prompts/classes.md`)
+- [x] Placed high-resolution published schedule (`media/latest_schedule.jpg`, 1999×1545px) into `public/images/latest_schedule.jpg` and `public/latest_schedule.jpg`.
+- [x] Kept interactive class cards and schedule matrix table.
+- [x] Added dedicated **Official Fall 2026 Schedule Flyer** section at the bottom of `src/pages/ClassesPage.jsx`.
+- [x] Added interactive expandable card with hover zoom, "Expand Fullscreen" button, and direct "Download Flyer" action (`download="Resilience-Gymnastics-Fall-2026-Schedule.jpg"`).
+- [x] Built responsive lightbox modal for distraction-free full-resolution viewing with close/download controls.
+- [x] Updated `deploy.sh` to sync the schedule image asset and flush the cache.
+- [x] Verified live deployment at `https://colins110.sg-host.com/classes` and image delivery at `https://colins110.sg-host.com/images/latest_schedule.jpg`.
+
+### Step 10: Published PNO Flyer on Events Page (`.prompts/events.md`)
+- [x] Copied official Parents' Night Out promotional flyer (`media/9_19 PNO .png`, 1024×1536px) into `public/images/pno-sept19.png` and `public/images/9_19_PNO.png`.
+- [x] Highlighted **Saturday, September 19, 2026** as the next upcoming PNO in the hero section and upcoming dates matrix.
+- [x] Added official registration instructions ("In Parent Portal under 'Looking for Activities' select the green 'Register' button on PNO").
+- [x] Added interactive **September 19, 2026 Parents' Night Out Flyer** card at the bottom of `src/pages/EventsPage.jsx` with zoom hover preview.
+- [x] Implemented responsive fullscreen lightbox modal and direct download button (`download="Resilience-Gymnastics-PNO-Sept-19-2026.png"`).
+- [x] Updated `deploy.sh` to sync `pno-sept19.png` and flushed SiteGround dynamic cache.
+- [x] Verified live deployment at `https://colins110.sg-host.com/events` and image asset at `https://colins110.sg-host.com/images/pno-sept19.png`.
+
 ---
 
 ## Locked Components (Do Not Modify Without Direct Request)

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Search, Filter, Clock, Users, ArrowRight, Check, Sparkles, 
-  AlertCircle, DollarSign, ShieldCheck, Calendar, Info, FileText, ChevronRight 
+  AlertCircle, DollarSign, ShieldCheck, Calendar, Info, FileText, ChevronRight,
+  ZoomIn, Download, X, Maximize2
 } from 'lucide-react';
 import { classes, classCategories, gymInfo } from '../data/scheduleData';
 
@@ -12,6 +13,7 @@ export default function ClassesPage({ activeTheme, onSelectClassToEnroll, onOpen
   const [selectedDay, setSelectedDay] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('cards'); // 'cards' or 'table'
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Filter classes
   const filteredClasses = classes.filter((c) => {
@@ -326,6 +328,111 @@ export default function ClassesPage({ activeTheme, onSelectClassToEnroll, onOpen
               >
                 Need assistance selecting a level? Contact us →
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* Official Published Schedule Flyer Section (from latest_schedule.jpg) */}
+        <div className="mt-16 pt-12 border-t border-gray-200">
+          <div className="text-center max-w-3xl mx-auto mb-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-100 text-pink-800 font-bold text-xs uppercase tracking-wider mb-3">
+              <FileText className="w-3.5 h-3.5 text-pink-600" />
+              Published Schedule Document
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
+              Official Fall 2026 Schedule Flyer
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
+              Below is the official schedule flyer published by Resilience Gymnastics Academy. Click the image to open the high-resolution viewer or download a printable copy.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-3xl border border-gray-200 shadow-md overflow-hidden p-3 sm:p-5">
+              <div 
+                className="relative group cursor-pointer rounded-2xl overflow-hidden bg-gray-50 border border-gray-100"
+                onClick={() => setLightboxOpen(true)}
+              >
+                <img
+                  src="/images/latest_schedule.jpg"
+                  alt="Resilience Gymnastics Academy Fall 2026 Published Schedule"
+                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                  <span className="px-5 py-2.5 rounded-xl bg-white text-gray-900 font-extrabold text-xs shadow-xl flex items-center gap-2 transform group-hover:scale-105 transition-transform">
+                    <Maximize2 className="w-4 h-4 text-pink-600" />
+                    Click to View Full Size
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 px-2">
+                <span className="text-xs text-gray-500 font-medium">
+                  Official flyer • Dimensions: 1999 × 1545px • Fall 2026
+                </span>
+                <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                  <button
+                    onClick={() => setLightboxOpen(true)}
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs transition-colors"
+                  >
+                    <ZoomIn className="w-3.5 h-3.5 text-pink-600" />
+                    Expand Fullscreen
+                  </button>
+                  <a
+                    href="/images/latest_schedule.jpg"
+                    download="Resilience-Gymnastics-Fall-2026-Schedule.jpg"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-sm shadow-pink-500/20 transition-all"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    Download Flyer
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Lightbox Modal for Full-Resolution Viewing */}
+        {lightboxOpen && (
+          <div 
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 transition-opacity"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <div 
+              className="relative max-w-6xl w-full max-h-[92vh] bg-slate-900 rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl flex flex-col items-center border border-slate-700"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="w-full flex items-center justify-between pb-3 px-1 sm:px-2 text-white border-b border-slate-800 mb-3">
+                <div className="flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-pink-400" />
+                  <span className="font-bold text-xs sm:text-sm text-pink-200">Fall 2026 Class Schedule Flyer</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="/images/latest_schedule.jpg"
+                    download="Resilience-Gymnastics-Fall-2026-Schedule.jpg"
+                    className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5 text-pink-400" />
+                    <span className="hidden sm:inline">Download</span>
+                  </a>
+                  <button
+                    onClick={() => setLightboxOpen(false)}
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+              <div className="overflow-auto max-h-[78vh] w-full flex justify-center rounded-xl bg-slate-950/60 p-2">
+                <img 
+                  src="/images/latest_schedule.jpg" 
+                  alt="Resilience Gymnastics Academy Fall 2026 Class Schedule" 
+                  className="max-w-full h-auto object-contain rounded-lg shadow-lg"
+                />
+              </div>
             </div>
           </div>
         )}

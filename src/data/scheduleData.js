@@ -261,14 +261,16 @@ export const classes = [
 export const eventsData = {
   parentsNightOut: {
     title: "Parents' Night Out 🎉",
-    tagline: "Need a few hours to yourself? Let us keep the kids entertained!",
+    tagline: "FUN FOR THEM. TIME FOR YOU!",
+    nextEventDate: "Saturday, September 19, 2026",
     time: "5:00 PM – 9:00 PM",
-    description: "Our Parents' Night Out is packed with active play, pizza, crafts, group games, and the possibility of a movie later in the evening for kids who need a break—giving your child a fun-filled evening with friends at Resilience Gymnastics Academy!",
+    flyerImage: "/images/pno-sept19.png",
+    description: "Need a few hours to yourself? Let us keep the kids entertained while you enjoy a night out! Our Parents' Night Out is packed with active play, pizza, crafts, group games, and the possibility of a movie later in the evening for those who need a less active environment—giving your child a fun-filled evening with friends at Resilience Gymnastics Academy!",
     timeline: [
       { time: "5:00 – 6:30 PM", activity: "Open Gym & Supervised Play" },
       { time: "6:30 – 7:00 PM", activity: "Pizza Dinner (allergies/dietary preferences welcome to bring safe food)" },
       { time: "7:00 – 7:30 PM", activity: "Creative Crafts & Interactive Activities" },
-      { time: "7:30 – 9:00 PM", activity: "Group Games & Kid-Friendly Movie Wind-Down" }
+      { time: "7:30 – 9:00 PM", activity: "Group Games & Movie Wind-Down Option" }
     ],
     pricing: [
       { label: "1 Child", price: "$50" },
@@ -276,20 +278,21 @@ export const eventsData = {
       { label: "Each Additional Child", price: "$40" }
     ],
     whoCanAttend: [
-      "Ages 4 to 12 (must be potty-trained)",
+      "Ages 4 to 12 (must be fully potty-trained)",
       "Open to both members and non-members!",
       "Parents are welcome to pick up their child earlier if convenient"
     ],
     whatToBring: [
-      "Comfortable athletic clothing (no snaps, zippers, or buckles)",
-      "Bare feet in the gymnastics area",
-      "Refillable water bottle labeled with your child's name"
+      "Refillable water bottle labeled with child's name",
+      "Comfortable athletic clothing (bare feet on gym floors, no snaps/zippers)",
+      "Snack or safe food alternative if allergic to or preferring not to eat pizza"
     ],
     upcomingDates: {
-      fall2026: ["Sept 20, 2026", "Oct 18, 2026", "Nov 15, 2026", "Dec 13, 2026"],
-      spring2027: ["Jan 17, 2027", "Feb 21, 2027", "Mar 20, 2027", "Apr 17, 2027", "May 15, 2027"]
+      fall2026: ["Sept 19, 2026 (Next Event!)", "Oct 17, 2026", "Nov 21, 2026", "Dec 19, 2026"],
+      spring2027: ["Jan 16, 2027", "Feb 20, 2027", "Mar 20, 2027", "Apr 17, 2027", "May 15, 2027"]
     },
-    registrationNote: "Spots are limited to ensure safe coach-to-child ratios. Register early through your Parent Portal to secure your spot!"
+    registrationInstructions: "In your Jackrabbit Parent Portal dashboard: look on the right side under 'Looking for Activities' and select the green 'Register' button on the PNO event.",
+    registrationNote: "Spots are limited to ensure safe coach-to-child ratios. Register early through your Parent Portal to secure your child's spot!"
   },
   birthdayParties: {
     title: "Gymnastics Birthday Parties 🎂",
@@ -320,48 +323,191 @@ export const eventsData = {
 export const teamData = {
   title: "Resilience Competitive & Pre-Team Program",
   tagline: "Developing champions of character, courage, and excellence.",
-  heroImage: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1600&q=80",
+  heroImage: "/images/gymnast-beam.webp",
   philosophy: "At Resilience Gymnastics Academy, competitive gymnastics is more than medals and scores. We cultivate lifelong resilience, self-belief, work ethic, and sportsmanship. We celebrate effort over perfection, courage over fear, and growth over comparison.",
-  programs: [
+  
+  preTeam: {
+    id: "mighty-minis",
+    name: "Mighty Minis Pre-Team",
+    badge: "Foundational Pre-Team Bridge",
+    ageRange: "Ages 4 - 7 (By Coach Recommendation or Evaluation)",
+    schedule: "90 Minutes — 2x per Week (3 Hours Total)",
+    tagline: "The Bridge From Recreational to Competitive Gymnastics",
+    description: "Mighty Minis is RGA's foundational pre-team program designed for young gymnasts who show natural enthusiasm, physical coordination, and readiness for a more structured training environment. This program prepares athletes for either the Xcel or DP competitive track.",
+    highlights: [
+      "Bridges the gap between recreational classes and competitive team expectations",
+      "Develops strong technical foundations, flexibility, core conditioning, and work ethic",
+      "Introduces skill progressions, form discipline, routines, and body positions",
+      "Builds team habits: goal setting, perseverance, accountability, and teammate support",
+      "Evaluates gymnast readiness for entry into either Xcel Bronze or DP Compulsory"
+    ]
+  },
+
+  xcelProgram: {
+    id: "xcel-program",
+    name: "USA Gymnastics Xcel Program",
+    badge: "Flexible Competitive Track",
+    subtitle: "Competitive Excellence with Flexibility for Multi-Sport & Well-Rounded Athletes",
+    description: "Our USAG Xcel Program provides an authentic competitive gymnastics experience designed for gymnasts who desire high achievement without the overwhelming time commitment of traditional DP. Athletes compete in sanctioned invitationals across Colorado with customized routines tailored to their strengths and personalities.",
+    weeklyHours: "6 – 12 Hours / Week",
+    levelsOffered: "Bronze, Silver, Gold, Platinum",
+    strengths: [
+      "Customized routines tailored to each gymnast's personal strengths and artistic style",
+      "Flexible training schedules ideal for multi-sport athletes or rigorous academic schedules",
+      "Competes in local, state, and regional USA Gymnastics sanctioned meets",
+      "Safe, progressive skill development with lower injury risk and positive team culture"
+    ],
+    tiers: [
+      {
+        level: "Bronze",
+        badge: "Entry Competitive",
+        hours: "4 – 6 Hours / Week",
+        focus: "Foundational Routines & Presentation",
+        description: "The entry point to competitive gymnastics. Athletes learn choreographed routines on all four events with an emphasis on presentation, posture, and confidence under friendly competitive conditions.",
+        keySkills: ["Handstand holds & cartwheels", "Bar pullover & cast progressions", "Beam mounts, arabesques & dismounts", "Basic floor tumbling & leap connections"]
+      },
+      {
+        level: "Silver",
+        badge: "Developing Competitive",
+        hours: "6 – 8 Hours / Week",
+        focus: "Skill Progression & Precision",
+        description: "Silver gymnasts advance their skills with increased complexity and precision. Routines become more dynamic, incorporating flight elements, turns, and higher-level bar releases.",
+        keySkills: ["Round-off back handspring drills", "Bar back hip circles & squat-ons", "Beam handstands & leap combinations", "Floor tumbling passes & artistic choreography"]
+      },
+      {
+        level: "Gold",
+        badge: "Intermediate Competitive",
+        hours: "8 – 10 Hours / Week",
+        focus: "Individualized Choreography & Flight",
+        description: "At the Gold level, routines are uniquely tailored to showcase the gymnast's style. Athletes train advanced flight elements and prepare for high school gymnastics or upper-level club competition.",
+        keySkills: ["Back handspring connections on floor", "Kips & clear hips on uneven bars", "Beam flight elements & 1/1 pirouettes", "Handspring vaulting & high-level apparatus flight"]
+      },
+      {
+        level: "Platinum",
+        badge: "Advanced Competitive",
+        hours: "10 – 12 Hours / Week",
+        focus: "Advanced Difficulty & Artistry",
+        description: "Our highest Xcel division. Platinum athletes perform sophisticated choreography, twisting tumbling passes, and complex bar releases, demonstrating collegiate-level work ethic and maturity.",
+        keySkills: ["Salto & twisting passes on floor", "Cast to handstands & flyaway dismounts", "Beam back walkovers/handsprings & leaps", "Tsukahara/Yurchenko entry vaulting drills"]
+      }
+    ]
+  },
+
+  dpProgram: {
+    id: "dp-program",
+    name: "USA Gymnastics Developmental Program (DP)",
+    badge: "Traditional USAG Track",
+    subtitle: "A Sequential Level Progression from Compulsory Mastery to Advanced Optional & Collegiate Pathways",
+    description: "Formerly known as the Junior Olympic (J.O.) program, the Developmental Program is USA Gymnastics' premier sequential pathway. Athletes progress step-by-step: first mastering standardized Compulsory routines (Levels 2–5) to build an unbreakable foundation of technique, before graduating to personalized Optional routines (Levels 6–10) and collegiate (NCAA) competition.",
+    weeklyHours: "9 – 20+ Hours / Week",
+    levelsOffered: "Compulsory (Levels 2–5) → Optional (Levels 6–10) → Collegiate / NCAA",
+    progressionNote: "DP is a progressive pathway: gymnasts start in Compulsory to master foundational technique on each event. Once compulsory routines and mobility scores are mastered, athletes advance to the Optional program.",
+    strengths: [
+      "Structured level-by-level progression (Compulsory Levels 2–5 into Optional Levels 6–10)",
+      "Standardized national curriculum building flawless technique, body alignment, and discipline",
+      "Graduation into custom choreography, individual artistry, and high-difficulty skills in Optional",
+      "Direct athletic trajectory preparing dedicated athletes for state, regional, national, and NCAA collegiate gymnastics"
+    ],
+    tiers: [
+      {
+        stage: "Stage 1: Foundational Mastery",
+        level: "Compulsory Program",
+        subheading: "Levels 2 – 5",
+        badge: "Step 1: Compulsory Progression",
+        hours: "9 – 14 Hours / Week",
+        focus: "Standardized National Curriculum & Strict Fundamentals",
+        description: "The vital first stage of the Developmental Program. Every gymnast across the nation competes the exact same routines created by USA Gymnastics. This ensures athletes master fundamental techniques on all four events—building superior strength, flexibility, coordination, and mental discipline before advancing.",
+        advancementCriteria: "Advancement to Optionals occurs once gymnasts consistently achieve USA Gymnastics mobility scores and demonstrate the technical maturity required for personalized routines.",
+        keySkills: [
+          "Levels 2 & 3: Master fundamental shapes, precise body alignment, handstand holds, and glide kip drills",
+          "Level 4: Strict compulsory routine mastery including back handsprings on floor and kip-cast-squat on uneven bars",
+          "Level 5: Advanced compulsory routines with long-hang kips, clear hip circles, beam cartwheels, and flyaways"
+        ]
+      },
+      {
+        stage: "Stage 2: Advanced Artistry & Difficulty",
+        level: "Optional Program",
+        subheading: "Levels 6 – 10",
+        badge: "Step 2: Optional Progression",
+        hours: "15 – 20+ Hours / Week",
+        focus: "Personalized Routines, Maximum Difficulty & NCAA Trajectory",
+        description: "Tailored specifically for gymnasts who have mastered the basics of compulsory routines. This upper-level program empowers athletes to explore their creativity and individuality, choreographing personalized routines to showcase each athlete's unique talents while pushing difficulty boundaries and pursuing collegiate recruitment.",
+        advancementCriteria: "Prepares athletes for State, Regional, and National Championships, Westerns/Nationals, and NCAA Division I, II, or III collegiate team recruitment.",
+        keySkills: [
+          "Levels 6 & 7: Transition to custom routines, cast to handstands, beam flight series, and flipping/twisting vaults",
+          "Levels 8 & 9: High-difficulty connections, giants, pirouettes, double saltos, and collegiate recruitment portfolios",
+          "Level 10: Maximum difficulty, national championship podiums, and NCAA Division I/II/III scholarship preparation"
+        ]
+      }
+    ]
+  },
+
+  comparisonMatrix: [
     {
-      id: "mighty-minis",
-      name: "Mighty Minis (Pre-Team)",
-      schedule: "90 Minutes — 2x per Week",
-      ageRange: "Ages 4 - 7 (Placement by Coach Recommendation)",
-      badge: "Foundational Pre-Team",
-      description: "Mighty Minis is RGA's foundational pre-team program designed for gymnasts ready to increase their training beyond traditional recreational classes and begin preparing for competitive team.",
-      highlights: [
-        "Bridges the gap between recreational classes and competitive team expectations",
-        "Develops strong technical foundations, flexibility, core conditioning, and work ethic",
-        "Introduces skill progressions, form discipline, routines, and body positions",
-        "Builds team habits: goal setting, perseverance, accountability, and teammate support"
-      ]
+      feature: "Primary Athletic Focus",
+      mightyMinis: "Foundational strength, posture & readiness",
+      xcel: "Personalized routines, multi-sport flexibility",
+      dp: "Strict technical perfection & collegiate path"
     },
     {
-      id: "usag-team",
-      name: "USAG Developmental & Competitive Team",
-      schedule: "Year-Round Training (Multiple Hours Weekly by Level)",
-      ageRange: "Levels 2 – 10 & Xcel Divisions",
-      badge: "USAG Competitive",
-      description: "Our competitive team represents Resilience Gymnastics Academy in USAG sanctioned local, state, and regional competitions. Athletes train in a structured, positive environment guided by passionate, safety-certified coaches.",
-      highlights: [
-        "Compulsory (Levels 2-5) and Optional / Xcel Competitive Tracks",
-        "Emphasis on sound biomechanics, individualized pacing, and injury prevention",
-        "Comprehensive mental mindset training, goal tracking, and confidence building",
-        "Supportive, family-like team culture where teammates lift each other up"
-      ]
+      feature: "Weekly Training Commitment",
+      mightyMinis: "3 Hours (Two 90-min practices)",
+      xcel: "6 – 12 Hours / Week",
+      dp: "9 – 20+ Hours / Week"
+    },
+    {
+      feature: "Routine Choreography",
+      mightyMinis: "Skill progressions & basic sequences",
+      xcel: "100% Custom routines from Bronze to Platinum",
+      dp: "Standardized (L2-5) / Custom Optional (L6-10)"
+    },
+    {
+      feature: "Competition Travel Scope",
+      mightyMinis: "In-gym exhibitions & showcases",
+      xcel: "Local Colorado meets, State, Regionals",
+      dp: "State, Regional, Western & National meets"
+    },
+    {
+      feature: "Schedule Flexibility",
+      mightyMinis: "High (2 set days)",
+      xcel: "Moderate-High (supports multi-sport athletes)",
+      dp: "Low (demands primary athletic dedication)"
+    },
+    {
+      feature: "Ideal For",
+      mightyMinis: "Young athletes showing advanced interest",
+      xcel: "Athletes wanting competition + life balance",
+      dp: "Athletes aiming for highest competitive ranks / NCAA"
     }
   ],
+
   coachingCommitment: [
     "Safety-first progression standards certified through USA Gymnastics",
     "Positive reinforcement coaching methodology centered on long-term athletic development",
     "Balanced approach valuing academic success, family time, and well-rounded growth",
     "Clear, continuous communication with gymnast families throughout the competitive season"
   ],
-  tryoutInfo: {
-    heading: "Interested in Joining Our Team?",
-    description: "Evaluations for Mighty Minis and USAG Competitive Teams are available year-round for gymnasts moving from other programs or progressing out of advanced recreational classes.",
-    contactText: "Call our Front Desk at 303-512-0799 or email us at frontdesk@rgagymnast.com to schedule a private evaluation or discuss team placement."
+
+  evaluationProcess: {
+    heading: "How Team Evaluations Work",
+    description: "Every athlete's competitive journey begins with an individualized coach evaluation to ensure appropriate placement based on skill readiness, mental focus, and developmental goals.",
+    steps: [
+      {
+        step: 1,
+        title: "Submit Evaluation Request",
+        desc: "Fill out the team evaluation request form below or contact our front desk team."
+      },
+      {
+        step: 2,
+        title: "30-Minute Skills Assessment",
+        desc: "A senior coach evaluates flexibility, core strength, basic apparatus skills, and coachability."
+      },
+      {
+        step: 3,
+        title: "Personalized Family Consultation",
+        desc: "We discuss recommended placement (Mighty Minis, Xcel, or DP), training schedule, and answer questions."
+      }
+    ]
   }
 };
 
