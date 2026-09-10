@@ -27,7 +27,7 @@ export default function Hero({ activeTheme, onOpenEnroll, onOpenTrial }) {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl">
-              At <strong className="text-white font-semibold">Resilience Gymnastics Academy</strong> (formerly Gymnastics Plus), we empower children ages 3 and up to develop strength, agility, self-confidence, and a lifelong love for movement in a positive, supportive environment.
+              At <strong className="text-white font-semibold">Resilience Gymnastics Academy</strong> (formerly Gymnastics Plus), we empower young athletes in competitive USAG and recreational gymnastics to develop strength, agility, self-confidence, and a lifelong love for movement in a positive, supportive environment.
             </p>
 
             {/* Value Highlights */}
@@ -78,8 +78,8 @@ export default function Hero({ activeTheme, onOpenEnroll, onOpenTrial }) {
               
               <div className="relative bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
                 <img
-                  src="https://images.unsplash.com/photo-1566241142559-40e1dab266c6?auto=format&fit=crop&w=1000&q=80"
-                  alt="Young gymnast balancing on beam at RGA"
+                  src="https://images.unsplash.com/photo-1576490252381-c97ccb950043?auto=format&fit=crop&w=1000&q=80"
+                  alt="Young gymnast practicing on balance beam at RGA"
                   className="w-full h-[420px] object-cover"
                 />
                 
@@ -91,7 +91,7 @@ export default function Hero({ activeTheme, onOpenEnroll, onOpenTrial }) {
                         Fall 2026 Registration Open
                       </div>
                       <div className="text-sm font-bold text-white mt-0.5">
-                        Classes for Ages 3 to 18
+                        Recreational & USAG Competitive Programs
                       </div>
                     </div>
                     <a

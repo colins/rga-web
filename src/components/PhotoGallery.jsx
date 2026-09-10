@@ -16,10 +16,10 @@ export default function PhotoGallery({ activeTheme }) {
             Inside Our Gym
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Gymnastics Activities & Energy
+            Youth Gymnastics Activities & Energy
           </h2>
           <p className="mt-4 text-base text-gray-600 leading-relaxed">
-            Take a look at the equipment, routines, and joyful moments waiting for your child at Resilience Gymnastics Academy.
+            Take a look at the equipment, routines, and joyful moments for our young athletes across our Parent-Tot, Recreational, GymNinjas, and USAG Competitive programs at Resilience Gymnastics Academy.
           </p>
         </div>
 

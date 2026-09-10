@@ -1,10 +1,17 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Globe, Heart, ArrowUp } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, Heart, ArrowUp, ExternalLink } from 'lucide-react';
 import { gymInfo } from '../data/scheduleData';
 
-export default function Footer({ onOpenEnroll }) {
+export default function Footer({ onOpenEnroll, onNavigate }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLinkClick = (path, e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(path);
+    }
   };
 
   return (
@@ -32,7 +39,7 @@ export default function Footer({ onOpenEnroll }) {
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-md">
-              Formerly known as <strong className="text-slate-200">Gymnastics Plus</strong> (cogymplus.com). Serving Denver families with high-quality recreational gymnastics, ninja training, and youth athletics.
+              Building strength, confidence, and character — one skill at a time. Serving Denver families with recreational gymnastics, GymNinjas, birthday parties, and competitive USAG teams.
             </p>
 
             <div className="pt-2">
@@ -52,19 +59,44 @@ export default function Footer({ onOpenEnroll }) {
             </h4>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About Resilience Gymnastics</a>
+                <a href="/" onClick={(e) => handleLinkClick('/', e)} className="hover:text-white transition-colors">
+                  Home
+                </a>
               </li>
               <li>
-                <a href="#values" className="hover:text-white transition-colors">Our Core Values & Mission</a>
+                <a href="/classes" onClick={(e) => handleLinkClick('/classes', e)} className="hover:text-white transition-colors">
+                  Class Schedule & Offerings
+                </a>
               </li>
               <li>
-                <a href="#schedule" className="hover:text-white transition-colors">Fall 2026 Class Schedule</a>
+                <a href="/events" onClick={(e) => handleLinkClick('/events', e)} className="hover:text-white transition-colors">
+                  Events (Parents' Night Out)
+                </a>
               </li>
               <li>
-                <a href="#tuition" className="hover:text-white transition-colors">Tuition & Membership Fees</a>
+                <a href="/birthday-parties" onClick={(e) => handleLinkClick('/birthday-parties', e)} className="hover:text-white transition-colors">
+                  Gymnastics Birthday Parties
+                </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-white transition-colors">Gym Photo Gallery</a>
+                <a href="/team" onClick={(e) => handleLinkClick('/team', e)} className="hover:text-white transition-colors">
+                  Competitive & Pre-Team Program
+                </a>
+              </li>
+              <li>
+                <a href={gymInfo.waiverUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors inline-flex items-center gap-1">
+                  Digital Waivers <ExternalLink className="w-3 h-3 text-slate-500" />
+                </a>
+              </li>
+              <li>
+                <a href={gymInfo.portalUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors inline-flex items-center gap-1">
+                  Payment / Parent Portal <ExternalLink className="w-3 h-3 text-slate-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/about" onClick={(e) => handleLinkClick('/about', e)} className="hover:text-white transition-colors">
+                  About Us & Contact
+                </a>
               </li>
             </ul>
           </div>
@@ -78,9 +110,14 @@ export default function Footer({ onOpenEnroll }) {
             <div className="space-y-2.5 text-slate-300">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" />
-                <span>
+                <a 
+                  href={gymInfo.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
                   {gymInfo.address}
-                </span>
+                </a>
               </div>
 
               <div className="flex items-center gap-2.5">
@@ -118,7 +155,8 @@ export default function Footer({ onOpenEnroll }) {
             onClick={scrollToTop}
             className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors font-medium"
           >
-            Back to Top <ArrowUp className="w-3.5 h-3.5" />
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
           </button>
         </div>
 
