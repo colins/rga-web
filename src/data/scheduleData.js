@@ -297,27 +297,75 @@ export const eventsData = {
   },
   birthdayParties: {
     title: "Gymnastics Birthday Parties 🎂",
-    tagline: "Celebrate your child's special day with high-energy fun at RGA!",
-    price: "$250",
+    tagline: "Celebrate your child's special day with active gymnastics fun at RGA!",
+    price: "$300",
     image: "/images/event-birthday.webp",
-    duration: "1.5 Hours Private Party",
+    flyerImage: "/images/birthday-flyer.png",
+    duration: "90 Minutes (1.5 Hours)",
+    availableTimes: [
+      { day: "Saturdays", time: "3:00 PM – 4:30 PM" },
+      { day: "Sundays", time: "10:30 AM – 12:00 PM" },
+      { day: "Sundays", time: "1:00 PM – 2:30 PM" }
+    ],
+    timeline: [
+      { time: "First 60 Minutes", activity: "Supervised time in the gym on equipment, obstacle courses, and games (age-appropriate for birthday child)" },
+      { time: "Remaining 30 Minutes", activity: "Time spent in the private party room for cake, refreshments, and celebration" }
+    ],
     highlights: [
-      "100% Private Gym Access — your group has the entire gym facility to themselves!",
-      "60 Minutes of structured games, obstacle courses, trampoline, foam pit & open play",
-      "30 Minutes in the private party room for cake, presents, and celebration",
-      "10 participating children included in base price",
-      "Dedicated RGA party host/coaches leading all activities and assisting setup/cleanup"
+      "90 Minutes of private party celebration (60 min gym fun + 30 min party room)",
+      "Structured games, obstacle courses, and gymnastics equipment tailored to birthday child's age",
+      "Dedicated RGA party coaches supervising and leading all gym activities",
+      "Observation deck and party room seating for parents and guests",
+      "Setup assistance and post-party cleanup support"
+    ],
+    packages: [
+      {
+        name: "Package 1",
+        guests: "1 – 10 Children",
+        cost: "$300",
+        deposit: "$100 deposit due at booking",
+        description: "Includes 90 minutes of total party time with 60 minutes of supervised gymnastics gym activities and 30 minutes in the private party room."
+      },
+      {
+        name: "Package 2",
+        guests: "11 – 20 Children",
+        cost: "$400",
+        deposit: "$100 non-refundable deposit due at booking",
+        description: "Great for larger celebrations. Includes 90 minutes of total party time with 60 minutes of supervised gymnastics gym activities and 30 minutes in the private party room."
+      }
     ],
     pricingDetails: [
-      { item: "Base Package (1.5 Hours, up to 10 children)", cost: "$250" },
-      { item: "Each Additional Child", cost: "$10 / child" },
-      { item: "Additional Instructor (required for parties with >15 kids)", cost: "$20" }
+      { item: "Package 1 (1–10 Children)", cost: "$300", deposit: "$100 deposit due at booking" },
+      { item: "Package 2 (11–20 Children)", cost: "$400", deposit: "$100 non-refundable deposit due at booking" },
+      { item: "Staff Gratuity", cost: "Accepted", deposit: "Tips are appreciated but not included in package total" }
+    ],
+    policies: [
+      {
+        title: "Parent & Floor Policy",
+        desc: "No parents are allowed on equipment or the gym floor except for 'Birthday Parents' or parents of toddlers specifically invited in."
+      },
+      {
+        title: "Observation Deck",
+        desc: "Parents not on the gym floor are warmly welcome to watch from our elevated Observation Deck or relax in the party room."
+      },
+      {
+        title: "Signed Waivers Required",
+        desc: "All parents entering the gym must have a signed waiver. Every participating child must have a digital waiver signed by a parent or legal guardian prior to participation."
+      },
+      {
+        title: "Safety Restrictions",
+        desc: "Children in casts, boots, or orthopedic braces are not permitted to participate in the gymnastics portion of the party."
+      },
+      {
+        title: "Alcohol Policy",
+        desc: "Absolutely no alcohol is allowed anywhere on the premises."
+      }
     ],
     howItWorks: [
-      "1. Contact the front desk at 303-512-0799 or frontdesk@rgagymnast.com to check availability and choose your date & time.",
-      "2. Once booked, an RSVP & digital waiver link will be sent to you to easily share with all guests.",
-      "3. All participants complete their digital waiver prior to party day so every child can start playing immediately!",
-      "4. Bring your own cake, refreshments, and paper goods — our coaches handle the games, gym supervision, and cleanup assistance!"
+      "1. Contact the front desk at 303-512-0799 or frontdesk@rgagymnast.com to check weekend availability and choose your date & time.",
+      "2. Select Package 1 (1–10 kids, $300) or Package 2 (11–20 kids, $400) and place your $100 deposit to secure your spot.",
+      "3. Share our digital waiver link with all guests so every child has a signed waiver prior to party day.",
+      "4. Bring your own cake, food, and paper products — our coaches lead 60 minutes of gym games and 30 minutes in the party room!"
     ]
   }
 };

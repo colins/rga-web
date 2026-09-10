@@ -110,6 +110,20 @@ Website for Resilience Gymnastics Academy (`rgagymnast.com`, formerly Gymnastics
 - [x] Updated `scheduleData.js` pre-team and DP descriptions to eliminate pathway/bridge terminology between programs.
 - [x] Verified production build with `npm run build`.
 
+### Step 13: Birthday Party Flyer & Content Integration (`.prompts/birthday-parties.md`)
+- [x] Extracted complete official specifications from `media/birthday flyer.png`:
+  - Weekend party times: Saturdays 3:00–4:30 PM, Sundays 10:30 AM–12:00 PM, Sundays 1:00–2:30 PM
+  - Package 1: $300 (1–10 children, $100 deposit due at booking)
+  - Package 2: $400 (11–20 children, $100 non-refundable deposit due at booking)
+  - 90-minute structure: 60 minutes supervised gym play & obstacle courses + 30 minutes in private party room
+  - General info & policies: Floor parent policy ("Birthday Parents" only), Observation Deck, signed digital waivers, casts/boots/braces restrictions, alcohol prohibition
+- [x] Synchronized `eventsData.birthdayParties` in `src/data/scheduleData.js`.
+- [x] Copied flyer asset to `public/images/birthday-flyer.png` and `public/birthday-flyer.png`.
+- [x] Implemented interactive flyer preview card and full-resolution lightbox viewer on `/birthday-parties` matching the `/events` pattern.
+- [x] Added flyer download action (`download="Resilience-Gymnastics-Birthday-Party-Flyer.png"`).
+- [x] Updated `deploy.sh` to include `birthday-flyer.png` in SFTP file transfer.
+- [x] Verified production build with `npm run build` with zero errors.
+
 ---
 
 ## Locked Components (Do Not Modify Without Direct Request)
