@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Menu, X, Sparkles, ChevronDown, ExternalLink } from 'lucide-react';
+import { Phone, Mail, MapPin, Menu, X, ExternalLink } from 'lucide-react';
 import { gymInfo } from '../data/scheduleData';
-import ThemeSwitcher from './ThemeSwitcher';
 
-export default function Navbar({ activeTheme, onSelectTheme, onOpenEnroll, currentPath, onNavigate }) {
+export default function Navbar({ activeTheme, onOpenEnroll, currentPath, onNavigate }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
 
   const handleNavClick = (path, e) => {
     e.preventDefault();
@@ -126,17 +124,6 @@ export default function Navbar({ activeTheme, onSelectTheme, onOpenEnroll, curre
                 );
               })}
 
-              {/* Theme Toggle Button */}
-              <button
-                onClick={() => setShowThemeSwitcher(!showThemeSwitcher)}
-                className="flex items-center gap-1 text-xs font-semibold px-2.5 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-700 hover:border-pink-300 hover:text-pink-600 transition-all shrink-0"
-                title="Switch Color Theme"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-pink-500" />
-                <span>Theme</span>
-                <ChevronDown className="w-3 h-3 text-gray-400" />
-              </button>
-
               {/* CTA Button */}
               <button
                 onClick={() => onOpenEnroll()}
@@ -149,14 +136,6 @@ export default function Navbar({ activeTheme, onSelectTheme, onOpenEnroll, curre
             {/* Mobile / Tablet Actions */}
             <div className="flex lg:hidden items-center space-x-2">
               <button
-                onClick={() => setShowThemeSwitcher(!showThemeSwitcher)}
-                className="p-2 text-pink-600 bg-pink-50 rounded-lg"
-                title="Change Theme"
-              >
-                <Sparkles className="w-5 h-5" />
-              </button>
-
-              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                 aria-label="Toggle navigation menu"
@@ -166,15 +145,6 @@ export default function Navbar({ activeTheme, onSelectTheme, onOpenEnroll, curre
             </div>
           </div>
         </div>
-
-        {/* Floating Theme Switcher Modal/Bar */}
-        {showThemeSwitcher && (
-          <div className="border-t border-gray-200 bg-gray-50/95 p-4 transition-all">
-            <div className="max-w-4xl mx-auto">
-              <ThemeSwitcher activeTheme={activeTheme} onSelectTheme={onSelectTheme} />
-            </div>
-          </div>
-        )}
 
         {/* Mobile Nav Menu */}
         {mobileMenuOpen && (

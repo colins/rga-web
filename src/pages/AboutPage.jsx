@@ -204,6 +204,17 @@ export default function AboutPage({ activeTheme }) {
           </div>
         </div>
 
+        {/* AI & Illustrative Content Disclosure */}
+        <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-semibold mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-pink-500" />
+            Site Content Notice
+          </div>
+          <p className="text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            Imagery and descriptive content on this site may be AI-assisted or digitally generated for illustrative purposes.
+          </p>
+        </div>
+
       </div>
     </div>
   );

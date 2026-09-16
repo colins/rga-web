@@ -124,6 +124,22 @@ Website for Resilience Gymnastics Academy (`rgagymnast.com`, formerly Gymnastics
 - [x] Updated `deploy.sh` to include `birthday-flyer.png` in SFTP file transfer.
 - [x] Verified production build with `npm run build` with zero errors.
 
+### Step 14: AI Content Disclosure Block on About Page (`.prompts/about.md`)
+- [x] Added digital content disclosure block at the bottom of `src/pages/AboutPage.jsx`.
+- [x] Included standard notice stating imagery and descriptive content on the site may be AI-assisted or digitally generated for illustrative purposes.
+- [x] Verified production build with `npm run build`.
+
+### Step 15: Removed Theme Chooser from Navbar
+- [x] Removed Theme Switcher desktop button and mobile icon trigger from `src/components/Navbar.jsx`.
+- [x] Cleaned up unused Lucide icons (`Sparkles`, `ChevronDown`) and component import.
+- [x] Cleaned up `onSelectTheme` prop in `src/App.jsx`.
+
+### Step 16: Connected Production Domain rgagymnast.com to SiteGround
+- [x] Configured DNS at Squarespace Domains: removed old Squarespace hosting defaults and pointed A record to SiteGround IP (`35.209.4.189`) with CNAME `www` -> `rgagymnast.com`.
+- [x] Preserved Google Workspace email MX (`smtp.google.com`) and verification records.
+- [x] Verified Let's Encrypt SSL active on `rgagymnast.com` and `www.rgagymnast.com` with HTTPS enforcement.
+- [x] Deployed latest production build to SiteGround public_html and purged cache.
+
 ---
 
 ## Locked Components (Do Not Modify Without Direct Request)

@@ -98,7 +98,6 @@ export default function App() {
       {/* Header Navigation */}
       <Navbar
         activeTheme={activeTheme}
-        onSelectTheme={setActiveTheme}
         onOpenEnroll={() => handleOpenEnroll()}
         currentPath={currentPath}
         onNavigate={navigate}
