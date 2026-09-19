@@ -140,6 +140,15 @@ Website for Resilience Gymnastics Academy (`rgagymnast.com`, formerly Gymnastics
 - [x] Verified Let's Encrypt SSL active on `rgagymnast.com` and `www.rgagymnast.com` with HTTPS enforcement.
 - [x] Deployed latest production build to SiteGround public_html and purged cache.
 
+### Step 17: Scrolling Announcement Banner with Expiration
+- [x] Created `src/data/announcement.json` and `public/announcement.json` as dedicated, isolated announcement configuration files for easy editing directly in GitHub.
+- [x] Implemented announcement message: `"Tonight's (9/19) PNO is cancelled due to low enrollment"`.
+- [x] Configured automatic 12-hour expiration timer (`expiresAt: "2026-09-20T03:41:00-06:00"`).
+- [x] Built responsive, GPU-accelerated continuous scrolling marquee banner `src/components/AnnouncementBanner.jsx` with pause-on-hover and dismiss button.
+- [x] Integrated remote dynamic fetch from GitHub raw content so edits made via GitHub update on the live site automatically.
+- [x] Integrated banner at top of `src/pages/HomePage.jsx`.
+- [x] Updated `deploy.sh` to sync `announcement.json` and flush cache.
+
 ---
 
 ## Locked Components (Do Not Modify Without Direct Request)

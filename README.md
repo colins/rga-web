@@ -165,6 +165,22 @@ If deploying the site to a subfolder (e.g., `https://rgagymnast.com/subfolder/`)
 
 ---
 
+## 📢 Updating the Announcement Banner (GitHub Edit)
+
+The home page displays an important announcement scrolling banner powered by `src/data/announcement.json`:
+
+1. Navigate to **`src/data/announcement.json`** on GitHub.
+2. Click the **Pencil icon** ("Edit this file").
+3. Update the fields:
+   - **`enabled`**: `true` to display, `false` to hide immediately.
+   - **`text`**: The message to scroll (e.g., `"Tonight's (9/19) PNO is cancelled due to low enrollment"`).
+   - **`badge`**: Optional badge text (e.g., `"Urgent Alert"` or `"Notice"`).
+   - **`expiresAt`**: ISO timestamp (e.g., `"2026-09-20T03:41:00-06:00"`). The banner automatically hides once this time passes.
+   - **`link`**: Optional internal path (e.g., `"/events"`) or external URL.
+4. Click **Commit changes**. The live site fetches the latest announcement from GitHub so updates take effect automatically.
+
+---
+
 ## Troubleshooting & Common Issues
 
 - **Site ground Cache / Changes Not Updating Immediately**:

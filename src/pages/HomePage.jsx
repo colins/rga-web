@@ -4,6 +4,7 @@ import {
   HeartHandshake, PartyPopper, Users, Star, MapPin, Phone, Mail, ExternalLink, Trophy
 } from 'lucide-react';
 import { gymInfo, values, eventsData, stockPhotos } from '../data/scheduleData';
+import AnnouncementBanner from '../components/AnnouncementBanner';
 
 export default function HomePage({ activeTheme, onNavigate, onOpenEnroll, onOpenTrial }) {
   const testimonials = [
@@ -61,6 +62,8 @@ export default function HomePage({ activeTheme, onNavigate, onOpenEnroll, onOpen
 
   return (
     <div className="space-y-0">
+      {/* Important Announcement Scrolling Banner */}
+      <AnnouncementBanner onNavigate={onNavigate} />
       
       {/* Hero Section — Achieve Sports Inspired: Impactful, Clean, Direct */}
       <section className={`relative overflow-hidden text-white py-20 lg:py-28 bg-gradient-to-br ${activeTheme.heroGradient}`}>
