@@ -23,11 +23,11 @@ export default function Footer({ onOpenEnroll, onNavigate }) {
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-600 to-purple-600 flex items-center justify-center text-white shadow-lg">
-                <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2L10.5 5.5L8 3L8.5 7L5 6L6.5 9.5L2 10L5.5 12L2 14L6.5 14.5L5 18L8.5 17L8 21L10.5 18.5L12 22L13.5 18.5L16 21L15.5 17L19 18L17.5 14.5L22 14L18.5 12L22 10L17.5 9.5L19 6L15.5 7L16 3L13.5 5.5L12 2Z" />
-                </svg>
-              </div>
+              <img 
+                src="/images/phoenix.webp" 
+                alt="Resilience Gymnastics Academy" 
+                className="h-10 w-auto object-contain" 
+              />
               <div>
                 <span className="font-extrabold text-xl text-white tracking-tight block leading-none">
                   RESILIENCE

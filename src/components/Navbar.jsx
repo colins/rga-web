@@ -72,12 +72,11 @@ export default function Navbar({ activeTheme, onOpenEnroll, currentPath, onNavig
               onClick={(e) => handleNavClick('/', e)} 
               className="flex items-center space-x-3 group"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-pink-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-pink-500/20 group-hover:scale-105 transition-transform">
-                {/* Phoenix Icon SVG */}
-                <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2L10.5 5.5L8 3L8.5 7L5 6L6.5 9.5L2 10L5.5 12L2 14L6.5 14.5L5 18L8.5 17L8 21L10.5 18.5L12 22L13.5 18.5L16 21L15.5 17L19 18L17.5 14.5L22 14L18.5 12L22 10L17.5 9.5L19 6L15.5 7L16 3L13.5 5.5L12 2Z" />
-                </svg>
-              </div>
+              <img 
+                src="/images/phoenix.webp" 
+                alt="Resilience Gymnastics Academy" 
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform" 
+              />
               <div>
                 <span className="font-extrabold text-xl sm:text-2xl text-gray-900 tracking-tight block leading-none">
                   RESILIENCE

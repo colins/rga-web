@@ -149,6 +149,13 @@ Website for Resilience Gymnastics Academy (`rgagymnast.com`, formerly Gymnastics
 - [x] Integrated banner at top of `src/pages/HomePage.jsx`.
 - [x] Updated `deploy.sh` to sync `announcement.json` and flush cache.
 
+### Step 18: Integrated Official Phoenix Logo Asset
+- [x] Extracted and optimized official brand phoenix graphic (`media/phoenix.webp`) with transparency.
+- [x] Cropped whitespace and saved high-resolution web assets into `public/images/phoenix.webp` and `public/phoenix.webp`.
+- [x] Updated `src/components/Navbar.jsx` to replace placeholder geometric SVG with brand phoenix logo (`h-12 w-auto object-contain`).
+- [x] Updated `src/components/Footer.jsx` brand header to use phoenix logo asset (`h-10 w-auto object-contain`).
+- [x] Updated `deploy.sh` to transfer `phoenix.webp` and deployed to SiteGround production (`rgagymnast.com`).
+
 ---
 
 ## Locked Components (Do Not Modify Without Direct Request)
