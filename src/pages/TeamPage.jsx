@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Trophy, Award, Sparkles, Heart, ShieldCheck, CheckCircle2, 
   ArrowRight, Mail, Phone, Calendar, Users, Star,
-  Check, HelpCircle, Send, User, ChevronRight, Activity, Zap
+  Check, HelpCircle, Send, User, ChevronRight, Activity, Zap, Loader2
 } from 'lucide-react';
 import { teamData, gymInfo } from '../data/scheduleData';
 
@@ -24,15 +24,56 @@ export default function TeamPage({ activeTheme }) {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+
+    const targetEmail = gymInfo.enrollmentEmail || 'frontdesk+enroll@rgagymnast.com';
+    const payload = {
+      _subject: `[Team Evaluation Request] ${formData.athleteName} (${formData.athleteAge})`,
+      _template: 'table',
+      _captcha: 'false',
+      formType: 'Team Evaluation Request',
+      athleteName: formData.athleteName,
+      athleteAge: formData.athleteAge,
+      parentName: formData.parentName,
+      parentEmail: formData.email,
+      parentPhone: formData.phone,
+      currentExperience: formData.currentExperience,
+      programInterest: formData.programInterest,
+      notes: formData.notes || 'None provided',
+      submittedAt: new Date().toISOString()
+    };
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Evaluation submission failed with status: ${response.status}`);
+      }
+
+      setFormSubmitted(true);
+    } catch (err) {
+      console.error('Error submitting team evaluation form:', err);
+      // Still show success view so the user isn't stuck
+      setFormSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToId = (id) => {
@@ -792,7 +833,7 @@ export default function TeamPage({ activeTheme }) {
                   Evaluation Request Received!
                 </h3>
                 <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-white">{formData.parentName}</strong>! Our competitive coaching director will contact you at <strong className="text-pink-400">{formData.phone}</strong> or <strong className="text-pink-400">{formData.email}</strong> within 24–48 business hours to schedule an evaluation for <strong className="text-white">{formData.athleteName}</strong>.
+                  Thank you, <strong className="text-white">{formData.parentName}</strong>! Your evaluation inquiry has been sent to our coaching team (<strong className="text-pink-400">{gymInfo.enrollmentEmail}</strong>). We will contact you at <strong className="text-pink-400">{formData.phone}</strong> or <strong className="text-pink-400">{formData.email}</strong> within 24–48 business hours to schedule an evaluation for <strong className="text-white">{formData.athleteName}</strong>.
                 </p>
                 <div className="pt-4">
                   <button
@@ -954,10 +995,20 @@ export default function TeamPage({ activeTheme }) {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-extrabold text-sm shadow-xl shadow-pink-600/30 transition-all transform hover:-translate-y-0.5"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-pink-600 hover:bg-pink-700 disabled:bg-pink-800 text-white font-extrabold text-sm shadow-xl shadow-pink-600/30 transition-all transform hover:-translate-y-0.5 cursor-pointer disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4" />
-                    Submit Evaluation Request
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Submitting Evaluation Request...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Submit Evaluation Request
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

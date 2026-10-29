@@ -156,6 +156,11 @@ Website for Resilience Gymnastics Academy (`rgagymnast.com`, formerly Gymnastics
 - [x] Updated `src/components/Footer.jsx` brand header to use phoenix logo asset (`h-10 w-auto object-contain`).
 - [x] Updated `deploy.sh` to transfer `phoenix.webp` and deployed to SiteGround production (`rgagymnast.com`).
 
+### Step 19: Connected Enrollment & Team Inquiries to frontdesk+enroll@rgagymnast.com
+- [x] Added `enrollmentEmail: "frontdesk+enroll@rgagymnast.com"` to `gymInfo` in `src/data/scheduleData.js`.
+- [x] Updated `src/components/EnrollmentModal.jsx` to submit class enrollment and free trial requests directly to `frontdesk+enroll@rgagymnast.com` with formatted field metadata, loading state, and confirmation details.
+- [x] Updated `src/pages/TeamPage.jsx` evaluation request form to route inquiries directly to `frontdesk+enroll@rgagymnast.com`.
+
 ---
 
 ## Locked Components (Do Not Modify Without Direct Request)

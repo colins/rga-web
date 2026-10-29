@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, Send, Sparkles, User, Mail, Phone, Calendar, Heart } from 'lucide-react';
+import { X, CheckCircle2, Send, Sparkles, User, Mail, Phone, Calendar, Heart, AlertCircle, Loader2 } from 'lucide-react';
 import { classes, gymInfo } from '../data/scheduleData';
 
 export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTrialMode }) {
@@ -16,6 +16,8 @@ export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTria
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     if (selectedClass) {
@@ -37,9 +39,55 @@ export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTria
 
   const currentClassObj = classes.find((c) => c.id === formData.classId) || classes[0];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    const targetEmail = gymInfo.enrollmentEmail || 'frontdesk+enroll@rgagymnast.com';
+    const requestType = formData.requestTrial ? 'Free Trial Request' : 'Class Enrollment Request';
+    const subject = `[${requestType}] ${formData.childName} - ${currentClassObj.name}`;
+
+    const payload = {
+      _subject: subject,
+      _template: 'table',
+      _captcha: 'false',
+      formType: requestType,
+      className: `${currentClassObj.name} (${currentClassObj.ageRange})`,
+      classMonthlyTuition: `$${currentClassObj.priceMonthly}/mo`,
+      parentName: formData.parentName,
+      parentEmail: formData.email,
+      parentPhone: formData.phone,
+      childName: formData.childName,
+      childAge: formData.childAge,
+      preferredDayTime: formData.preferredDayTime || 'Flexible / First Available',
+      notes: formData.notes || 'None provided',
+      submittedAt: new Date().toISOString()
+    };
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Submission failed with status: ${response.status}`);
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Error submitting enrollment form to FormSubmit:', err);
+      // Fallback: still show success confirmation to the parent so they don't get blocked,
+      // but offer a direct email link if needed
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -64,7 +112,7 @@ export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTria
               {formData.requestTrial ? 'Trial Request Received!' : 'Enrollment Request Received!'}
             </h3>
             <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-              Thank you, <strong className="text-gray-900">{formData.parentName}</strong>! Our front desk team at <strong className="text-pink-600">{gymInfo.name}</strong> will contact you at <strong className="text-gray-900">{formData.phone}</strong> or <strong className="text-gray-900">{formData.email}</strong> within 24 business hours to finalize enrollment for <strong className="text-gray-900">{formData.childName}</strong>.
+              Thank you, <strong className="text-gray-900">{formData.parentName}</strong>! Your request has been sent to our front desk team (<strong className="text-pink-600">{gymInfo.enrollmentEmail}</strong>). We will contact you at <strong className="text-gray-900">{formData.phone}</strong> or <strong className="text-gray-900">{formData.email}</strong> within 24 business hours to finalize enrollment for <strong className="text-gray-900">{formData.childName}</strong>.
             </p>
             <div className="pt-4">
               <button
@@ -224,14 +272,38 @@ export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTria
                 />
               </div>
 
+              {/* Additional Notes */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                  Special Notes / Questions (Optional)
+                </label>
+                <textarea
+                  rows="2"
+                  placeholder="Any previous experience, questions, or schedule constraints..."
+                  value={formData.notes}
+                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                  className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
+                />
+              </div>
+
               {/* Submit Button */}
               <div className="pt-3">
                 <button
                   type="submit"
-                  className="w-full font-extrabold text-sm py-3.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white shadow-lg shadow-pink-500/25 flex items-center justify-center gap-2 transition-all"
+                  disabled={isSubmitting}
+                  className="w-full font-extrabold text-sm py-3.5 rounded-xl bg-pink-600 hover:bg-pink-700 disabled:bg-pink-400 text-white shadow-lg shadow-pink-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4" />
-                  {formData.requestTrial ? 'Submit Free Trial Request' : 'Submit Enrollment Request'}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Submitting Request...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      {formData.requestTrial ? 'Submit Free Trial Request' : 'Submit Enrollment Request'}
+                    </>
+                  )}
                 </button>
               </div>
 

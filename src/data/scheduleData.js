@@ -5,6 +5,7 @@ export const gymInfo = {
   address: "6180 East Warren Ave, Denver, CO 80222",
   phone: "303-512-0799",
   email: "frontdesk@rgagymnast.com",
+  enrollmentEmail: "frontdesk+enroll@rgagymnast.com",
   currentWebsite: "https://rgagymnast.com",
   portalUrl: "https://app.jackrabbitclass.com/jr3.0/ParentPortal/Login?orgId=497095",
   waiverUrl: "https://form.jotform.com/ResilienceGymnasticsAcademy/resilience-gymnastics-academy",

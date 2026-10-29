@@ -35,7 +35,7 @@ App
 ```
 
 ## Primary Data Store (`src/data/scheduleData.js`)
-- `gymInfo`: Name, address, phone, email (`frontdesk@rgagymnast.com`), current website URL, portal URL (`Jackrabbit`), waiver URL (`JotForm`), maps URL, belief, vision, motto, tagline.
+- `gymInfo`: Name, address, phone, email (`frontdesk@rgagymnast.com`), enrollment email (`frontdesk+enroll@rgagymnast.com`), current website URL, portal URL (`Jackrabbit`), waiver URL (`JotForm`), maps URL, belief, vision, motto, tagline.
 - `values`: 4 core pillars with titles, descriptions, and youth gymnastics imagery.
 - `classCategories`: Filter options for classes (All, Tots & Preschool, Girls Rec & USAG, Boys Rec, GymNinjas).
 - `classes`: Full class catalog strictly synchronized with `media/latest_schedule.jpg` (Parent-Tot, Preschool, GymNinjas, Girls Beginner/Intermediate/Advanced, Boys Beginner/Intermediate/Advanced).
