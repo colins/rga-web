@@ -25,15 +25,35 @@ export default function TeamPage({ activeTheme }) {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const generateMailtoLink = () => {
+    const targetEmail = gymInfo.enrollmentEmail || 'frontdesk+enroll@rgagymnast.com';
+    const subject = encodeURIComponent(`[Team Evaluation Request] ${formData.athleteName} (${formData.athleteAge})`);
+    const body = encodeURIComponent(
+`Athlete Name: ${formData.athleteName}
+Athlete Age: ${formData.athleteAge}
+Parent / Guardian: ${formData.parentName}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Current Experience: ${formData.currentExperience}
+Program of Interest: ${formData.programInterest}
+Athlete Goals / Notes: ${formData.notes || 'None'}
+
+Please contact me to schedule a team evaluation assessment!`
+    );
+    return `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
     const targetEmail = gymInfo.enrollmentEmail || 'frontdesk+enroll@rgagymnast.com';
     const payload = {
@@ -62,15 +82,19 @@ export default function TeamPage({ activeTheme }) {
         body: JSON.stringify(payload)
       });
 
-      if (!response.ok) {
-        throw new Error(`Evaluation submission failed with status: ${response.status}`);
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || (data && (data.success === 'false' || data.success === false))) {
+        if (data && data.message && data.message.includes('Activation')) {
+          throw new Error(`This form is awaiting one-time email activation. Please click "Activate Form" in the verification email sent to ${targetEmail}, then try again.`);
+        }
+        throw new Error((data && data.message) || `Submission failed with status: ${response.status}`);
       }
 
       setFormSubmitted(true);
     } catch (err) {
       console.error('Error submitting team evaluation form:', err);
-      // Still show success view so the user isn't stuck
-      setFormSubmitted(true);
+      setErrorMessage(err.message || 'Unable to submit automatically. Please use the direct email option below.');
     } finally {
       setIsSubmitting(false);
     }
@@ -991,6 +1015,22 @@ export default function TeamPage({ activeTheme }) {
                     className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                   />
                 </div>
+
+                {/* Error Message with Mailto fallback */}
+                {errorMessage && (
+                  <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200 space-y-2">
+                    <p className="font-semibold leading-relaxed">{errorMessage}</p>
+                    <div>
+                      <a
+                        href={generateMailtoLink()}
+                        className="inline-flex items-center gap-1.5 font-bold text-pink-400 hover:text-pink-300 underline"
+                      >
+                        <Mail className="w-3.5 h-3.5" />
+                        Click here to send inquiry directly to {gymInfo.enrollmentEmail}
+                      </a>
+                    </div>
+                  </div>
+                )}
 
                 <div className="pt-2">
                   <button

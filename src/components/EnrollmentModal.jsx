@@ -39,6 +39,25 @@ export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTria
 
   const currentClassObj = classes.find((c) => c.id === formData.classId) || classes[0];
 
+  const generateMailtoLink = () => {
+    const targetEmail = gymInfo.enrollmentEmail || 'frontdesk+enroll@rgagymnast.com';
+    const requestType = formData.requestTrial ? 'Free Trial Request' : 'Class Enrollment Request';
+    const subject = encodeURIComponent(`[${requestType}] ${formData.childName} - ${currentClassObj.name}`);
+    const body = encodeURIComponent(
+`Class: ${currentClassObj.name} (${currentClassObj.ageRange}) - $${currentClassObj.priceMonthly}/mo
+Parent / Guardian: ${formData.parentName}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Child's Name: ${formData.childName}
+Child's Age: ${formData.childAge}
+Preferred Day & Time: ${formData.preferredDayTime || 'Flexible'}
+Notes / Questions: ${formData.notes || 'None'}
+
+Please contact me to finalize enrollment!`
+    );
+    return `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -75,16 +94,19 @@ export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTria
         body: JSON.stringify(payload)
       });
 
-      if (!response.ok) {
-        throw new Error(`Submission failed with status: ${response.status}`);
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || (data && (data.success === 'false' || data.success === false))) {
+        if (data && data.message && data.message.includes('Activation')) {
+          throw new Error(`This form is awaiting one-time email activation. Please click "Activate Form" in the verification email sent to ${targetEmail}, then try again.`);
+        }
+        throw new Error((data && data.message) || `Submission failed with status: ${response.status}`);
       }
 
       setSubmitted(true);
     } catch (err) {
       console.error('Error submitting enrollment form to FormSubmit:', err);
-      // Fallback: still show success confirmation to the parent so they don't get blocked,
-      // but offer a direct email link if needed
-      setSubmitted(true);
+      setErrorMessage(err.message || 'Unable to submit automatically. Please use the direct email option below.');
     } finally {
       setIsSubmitting(false);
     }
@@ -285,6 +307,25 @@ export default function EnrollmentModal({ isOpen, onClose, selectedClass, isTria
                   className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500"
                 />
               </div>
+
+              {/* Error Message with Mailto fallback */}
+              {errorMessage && (
+                <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-2">
+                  <div className="flex items-start gap-2">
+                    <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                    <p className="font-medium leading-relaxed">{errorMessage}</p>
+                  </div>
+                  <div className="pt-1">
+                    <a
+                      href={generateMailtoLink()}
+                      className="inline-flex items-center gap-1.5 font-bold text-pink-600 hover:text-pink-700 underline"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      Click here to send request via Email directly to {gymInfo.enrollmentEmail}
+                    </a>
+                  </div>
+                </div>
+              )}
 
               {/* Submit Button */}
               <div className="pt-3">
