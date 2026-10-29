@@ -85,27 +85,43 @@ Please contact me to finalize enrollment!`
     };
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+      // Primary: Post to native SiteGround backend (/enroll.php)
+      const primaryEndpoint = '/enroll.php';
+      let response;
+      try {
+        response = await fetch(primaryEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (networkErr) {
+        // Fallback for local development if /enroll.php is unreachable on localhost
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          response = await fetch(`https://rgagymnast.com/enroll.php`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+        } else {
+          throw networkErr;
+        }
+      }
 
       const data = await response.json().catch(() => null);
 
-      if (!response.ok || (data && (data.success === 'false' || data.success === false))) {
-        if (data && data.message && data.message.includes('Activation')) {
-          throw new Error(`This form is awaiting one-time email activation. Please click "Activate Form" in the verification email sent to ${targetEmail}, then try again.`);
-        }
+      if (!response.ok || (data && data.success === false)) {
         throw new Error((data && data.message) || `Submission failed with status: ${response.status}`);
       }
 
       setSubmitted(true);
     } catch (err) {
-      console.error('Error submitting enrollment form to FormSubmit:', err);
+      console.error('Error submitting enrollment form:', err);
       setErrorMessage(err.message || 'Unable to submit automatically. Please use the direct email option below.');
     } finally {
       setIsSubmitting(false);
