@@ -8,13 +8,25 @@ import { eventsData, gymInfo } from '../data/scheduleData';
 
 export default function EventsPage({ activeTheme }) {
   const { parentsNightOut } = eventsData;
-  const isPastDate = (dateLabel) => {
-    const match = dateLabel.match(/([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})/);
-    if (!match) return false;
+  const parseEventDate = (dateLabel) => {
+    const match = dateLabel.match(/([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})/);
+    if (!match) return null;
     const date = new Date(`${match[1]} ${match[2]}, ${match[3]}`);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return date < today;
+    return Number.isNaN(date.getTime()) ? null : date;
+  };
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const allEventDates = Object.values(parentsNightOut.upcomingDates).flat();
+  const nextEvent = allEventDates
+    .map((label) => ({ label, date: parseEventDate(label) }))
+    .filter(({ date }) => date && date >= today)
+    .sort((a, b) => a.date - b.date)[0];
+  const nextEventDate = nextEvent?.date.toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+  });
+  const isPastDate = (dateLabel) => {
+    const date = parseEventDate(dateLabel);
+    return date ? date < today : false;
   };
 
   return (
@@ -49,7 +61,8 @@ export default function EventsPage({ activeTheme }) {
                   <Pizza className="w-3.5 h-3.5" /> Featured Youth Event
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/30 border border-pink-400/40 text-pink-200 text-xs font-black uppercase tracking-wider">
-                  <Calendar className="w-3.5 h-3.5 text-pink-300" /> Next Event: {parentsNightOut.nextEventDate}
+                  <Calendar className="w-3.5 h-3.5 text-pink-300" />
+                  {nextEventDate ? `Next Event: ${nextEventDate}` : 'No upcoming events scheduled'}
                 </div>
               </div>
 

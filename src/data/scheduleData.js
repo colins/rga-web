@@ -263,7 +263,6 @@ export const eventsData = {
   parentsNightOut: {
     title: "Parents' Night Out 🎉",
     tagline: "FUN FOR THEM. TIME FOR YOU!",
-    nextEventDate: "Saturday, September 19, 2026",
     time: "5:00 PM – 9:00 PM",
     flyerImage: "/images/pno-sept19.png",
     image: "/images/event-pno.webp",
@@ -290,7 +289,7 @@ export const eventsData = {
       "Snack or safe food alternative if allergic to or preferring not to eat pizza"
     ],
     upcomingDates: {
-      fall2026: ["Sept 19, 2026 (Next Event!)", "Oct 17, 2026", "Nov 21, 2026", "Dec 19, 2026"],
+      fall2026: ["Sept 19, 2026", "Oct 17, 2026", "Nov 21, 2026", "Dec 19, 2026"],
       spring2027: ["Jan 16, 2027", "Feb 20, 2027", "Mar 20, 2027", "Apr 17, 2027", "May 15, 2027"]
     },
     registrationInstructions: "In your Jackrabbit Parent Portal dashboard: look on the right side under 'Looking for Activities' and select the green 'Register' button on the PNO event.",
