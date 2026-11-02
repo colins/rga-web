@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Calendar, Clock, DollarSign, Users, Sparkles, 
   CheckCircle2, ArrowRight, ExternalLink, Phone, Mail, Pizza, Gift, ShieldCheck, Heart,
-  ZoomIn, Download, X, Maximize2, FileText, AlertCircle
+  AlertCircle
 } from 'lucide-react';
 import { eventsData, gymInfo } from '../data/scheduleData';
 
 export default function EventsPage({ activeTheme }) {
   const { parentsNightOut } = eventsData;
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const isPastDate = (dateLabel) => {
+    const match = dateLabel.match(/([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})/);
+    if (!match) return false;
+    const date = new Date(`${match[1]} ${match[2]}, ${match[3]}`);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return date < today;
+  };
 
   return (
     <div className="py-12 sm:py-16 bg-gray-50 min-h-screen">
@@ -81,17 +88,6 @@ export default function EventsPage({ activeTheme }) {
                   📝 Register Through Parent Portal
                   <ExternalLink className="w-4 h-4" />
                 </a>
-
-                <button
-                  onClick={() => {
-                    const el = document.getElementById('pno-flyer-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 transition-all"
-                >
-                  <FileText className="w-4 h-4 text-purple-300" />
-                  View September 19 Flyer
-                </button>
 
                 <a
                   href={`tel:${gymInfo.phone}`}
@@ -186,7 +182,7 @@ export default function EventsPage({ activeTheme }) {
                 <div className="grid grid-cols-2 gap-3">
                   {parentsNightOut.upcomingDates.fall2026.map((date, idx) => (
                     <div key={idx} className="bg-white p-3 rounded-xl border border-purple-200 text-center shadow-xs">
-                      <span className="text-xs font-bold text-purple-900">{date}</span>
+                      <span className={`text-xs font-bold text-purple-900 ${isPastDate(date) ? 'line-through' : ''}`}>{date}</span>
                     </div>
                   ))}
                 </div>
@@ -200,7 +196,7 @@ export default function EventsPage({ activeTheme }) {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {parentsNightOut.upcomingDates.spring2027.map((date, idx) => (
                     <div key={idx} className="bg-white p-3 rounded-xl border border-indigo-200 text-center shadow-xs">
-                      <span className="text-xs font-bold text-indigo-900">{date}</span>
+                      <span className={`text-xs font-bold text-indigo-900 ${isPastDate(date) ? 'line-through' : ''}`}>{date}</span>
                     </div>
                   ))}
                 </div>
@@ -236,112 +232,6 @@ export default function EventsPage({ activeTheme }) {
               </div>
             </div>
           </div>
-
-          {/* =========================================================================
-              OFFICIAL SEPTEMBER 19 PNO FLYER SECTION (from media/9_19 PNO .png)
-             ========================================================================= */}
-          <div id="pno-flyer-section" className="pt-12 border-t border-gray-200 scroll-mt-20">
-            <div className="text-center max-w-3xl mx-auto mb-8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-100 text-pink-800 font-bold text-xs uppercase tracking-wider mb-3">
-                <FileText className="w-3.5 h-3.5 text-pink-600" /> Official Event Flyer
-              </div>
-              <h2 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
-                September 19, 2026 Parents' Night Out Flyer
-              </h2>
-              <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
-                Click the flyer below to open in high-resolution or download a printable copy to keep on your fridge!
-              </p>
-            </div>
-
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden p-3 sm:p-5">
-                <div 
-                  className="relative group cursor-pointer rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 flex justify-center"
-                  onClick={() => setLightboxOpen(true)}
-                >
-                  <img
-                    src="/images/pno-sept19.png"
-                    alt="Resilience Gymnastics Academy Parents' Night Out September 19 2026 Flyer"
-                    className="w-full max-w-lg h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                    <span className="px-5 py-2.5 rounded-xl bg-white text-gray-900 font-extrabold text-xs shadow-xl flex items-center gap-2 transform group-hover:scale-105 transition-transform">
-                      <Maximize2 className="w-4 h-4 text-pink-600" />
-                      Click to View Full Size
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 px-2">
-                  <span className="text-xs text-gray-500 font-medium">
-                    Saturday, September 19, 2026 • 5:00–9:00 PM
-                  </span>
-                  <div className="flex items-center gap-2.5 w-full sm:w-auto">
-                    <button
-                      onClick={() => setLightboxOpen(true)}
-                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs transition-colors"
-                    >
-                      <ZoomIn className="w-3.5 h-3.5 text-pink-600" />
-                      Expand Fullscreen
-                    </button>
-                    <a
-                      href="/images/pno-sept19.png"
-                      download="Resilience-Gymnastics-PNO-Sept-19-2026.png"
-                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-sm shadow-pink-500/20 transition-all"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      Download Flyer
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Lightbox Modal for Full-Resolution Viewing */}
-          {lightboxOpen && (
-            <div 
-              className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 transition-opacity"
-              onClick={() => setLightboxOpen(false)}
-            >
-              <div 
-                className="relative max-w-4xl w-full max-h-[94vh] bg-slate-900 rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl flex flex-col items-center border border-slate-700"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="w-full flex items-center justify-between pb-3 px-1 sm:px-2 text-white border-b border-slate-800 mb-3">
-                  <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-pink-400" />
-                    <span className="font-bold text-xs sm:text-sm text-pink-200">September 19, 2026 Parents' Night Out Flyer</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <a
-                      href="/images/pno-sept19.png"
-                      download="Resilience-Gymnastics-PNO-Sept-19-2026.png"
-                      className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
-                    >
-                      <Download className="w-3.5 h-3.5 text-pink-400" />
-                      <span className="hidden sm:inline">Download</span>
-                    </a>
-                    <button
-                      onClick={() => setLightboxOpen(false)}
-                      className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
-                      aria-label="Close modal"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-                <div className="overflow-auto max-h-[80vh] w-full flex justify-center rounded-xl bg-slate-950/60 p-2">
-                  <img 
-                    src="/images/pno-sept19.png" 
-                    alt="Resilience Gymnastics Academy Parents' Night Out September 19 2026 Flyer" 
-                    className="max-h-[76vh] w-auto object-contain rounded-lg shadow-lg"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
 
         </div>
 
