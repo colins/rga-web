@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Calendar, Clock, DollarSign, Users, Sparkles, 
   CheckCircle2, ArrowRight, ExternalLink, Phone, Mail, Pizza, Gift, ShieldCheck, Heart,
-  AlertCircle
+  AlertCircle, Download, ZoomIn, Maximize2, FileText, X
 } from 'lucide-react';
 import { eventsData, gymInfo } from '../data/scheduleData';
 
 export default function EventsPage({ activeTheme }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const { parentsNightOut } = eventsData;
   const parseEventDate = (dateLabel) => {
     const match = dateLabel.match(/([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})/);
@@ -112,6 +113,107 @@ export default function EventsPage({ activeTheme }) {
               </div>
             </div>
           </div>
+
+          {/* Official Parents' Night Out Flyer */}
+          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-gray-200 shadow-sm">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center space-y-2 mb-6">
+                <span className="text-xs font-bold text-pink-600 uppercase tracking-widest bg-pink-50 px-3.5 py-1 rounded-full border border-pink-200">
+                  Official Event Flyer
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
+                  Parents' Night Out Flyer
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500">
+                  Click the flyer to view it in full size or download a copy to share.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-b from-gray-50 to-pink-50/30 rounded-2xl p-4 sm:p-6 border border-pink-100 flex flex-col items-center">
+                <div
+                  className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg border border-gray-200 bg-white"
+                  onClick={() => setLightboxOpen(true)}
+                >
+                  <img
+                    src={parentsNightOut.flyerImage}
+                    alt="Resilience Gymnastics Academy Parents' Night Out flyer for November 14, 2026"
+                    className="w-full max-w-lg h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                    <span className="px-5 py-2.5 rounded-xl bg-white text-gray-900 font-extrabold text-xs shadow-xl flex items-center gap-2 transform group-hover:scale-105 transition-transform">
+                      <Maximize2 className="w-4 h-4 text-pink-600" />
+                      Click to View Full Size
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 px-2 w-full max-w-lg">
+                  <span className="text-xs text-gray-500 font-medium">Saturday, November 14, 2026 • 5:00–9:00 PM</span>
+                  <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                    <button
+                      onClick={() => setLightboxOpen(true)}
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs transition-colors"
+                    >
+                      <ZoomIn className="w-3.5 h-3.5 text-pink-600" />
+                      Expand Fullscreen
+                    </button>
+                    <a
+                      href={parentsNightOut.flyerImage}
+                      download="Resilience-Gymnastics-Parents-Night-Out-November-14-2026.png"
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-sm shadow-pink-500/20 transition-all"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      Download Flyer
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {lightboxOpen && (
+            <div
+              className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 transition-opacity"
+              onClick={() => setLightboxOpen(false)}
+            >
+              <div
+                className="relative max-w-4xl w-full max-h-[94vh] bg-slate-900 rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl flex flex-col items-center border border-slate-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="w-full flex items-center justify-between pb-3 px-1 sm:px-2 text-white border-b border-slate-800 mb-3">
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-pink-400" />
+                    <span className="font-bold text-xs sm:text-sm text-pink-200">Official Parents' Night Out Flyer</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={parentsNightOut.flyerImage}
+                      download="Resilience-Gymnastics-Parents-Night-Out-November-14-2026.png"
+                      className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5 text-pink-400" />
+                      <span className="hidden sm:inline">Download</span>
+                    </a>
+                    <button
+                      onClick={() => setLightboxOpen(false)}
+                      className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                      aria-label="Close modal"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+                <div className="overflow-auto max-h-[80vh] w-full flex justify-center rounded-xl bg-slate-950/60 p-2">
+                  <img
+                    src={parentsNightOut.flyerImage}
+                    alt="Resilience Gymnastics Academy Parents' Night Out flyer for November 14, 2026"
+                    className="max-h-[76vh] w-auto object-contain rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Detailed Breakdown: Timeline + Pricing & Guidelines */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

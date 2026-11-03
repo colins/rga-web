@@ -264,7 +264,7 @@ export const eventsData = {
     title: "Parents' Night Out 🎉",
     tagline: "FUN FOR THEM. TIME FOR YOU!",
     time: "5:00 PM – 9:00 PM",
-    flyerImage: "/images/pno-sept19.png",
+    flyerImage: "/images/pno-nov14-2026.png",
     image: "/images/event-pno.webp",
     description: "Need a few hours to yourself? Let us keep the kids entertained while you enjoy a night out! Our Parents' Night Out is packed with active play, pizza, crafts, group games, and the possibility of a movie later in the evening for those who need a less active environment—giving your child a fun-filled evening with friends at Resilience Gymnastics Academy!",
     timeline: [
@@ -289,7 +289,7 @@ export const eventsData = {
       "Snack or safe food alternative if allergic to or preferring not to eat pizza"
     ],
     upcomingDates: {
-      fall2026: ["Sept 19, 2026", "Oct 17, 2026", "Nov 21, 2026", "Dec 19, 2026"],
+      fall2026: ["Sept 19, 2026", "Oct 17, 2026", "Nov 14, 2026", "Dec 19, 2026"],
       spring2027: ["Jan 16, 2027", "Feb 20, 2027", "Mar 20, 2027", "Apr 17, 2027", "May 15, 2027"]
     },
     registrationInstructions: "In your Jackrabbit Parent Portal dashboard: look on the right side under 'Looking for Activities' and select the green 'Register' button on the PNO event.",
