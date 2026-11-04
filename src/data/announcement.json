@@ -1,8 +1,8 @@
 {
   "_instructions": "To update this announcement directly on GitHub: 1) Edit 'text', 2) Update 'expiresAt' (ISO 8601 string, e.g. 2026-09-20T03:41:00-06:00), 3) Set 'enabled' to true or false. Commit changes to publish.",
   "enabled": true,
-  "badge": "Urgent Alert",
-  "text": "Tonight's (9/19) PNO is cancelled due to low enrollment",
-  "expiresAt": "2026-09-20T03:41:00-06:00",
-  "link": "/events"
+  "badge": "Important",
+  "text": "RGA will be closed for all recreational classes 11/26-11/28. Tuition was prorated to account for this absence so no makeups needs",
+  "expiresAt": "2026-11-29T06:00:00-06:00",
+  "link": "/"
 }
