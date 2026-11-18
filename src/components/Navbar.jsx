@@ -17,6 +17,7 @@ export default function Navbar({ activeTheme, onOpenEnroll, currentPath, onNavig
     { label: 'Birthday Parties', path: '/birthday-parties', isExternal: false },
     { label: 'Waivers', url: gymInfo.waiverUrl, isExternal: true },
     { label: 'Team', path: '/team', isExternal: false },
+    { label: 'Team Meets', path: '/team-meets', isExternal: false },
     { label: 'Payment Portal', url: gymInfo.portalUrl, isExternal: true },
     { label: 'About', path: '/about', isExternal: false }
   ];

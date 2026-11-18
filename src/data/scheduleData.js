@@ -264,7 +264,7 @@ export const eventsData = {
     title: "Parents' Night Out 🎉",
     tagline: "FUN FOR THEM. TIME FOR YOU!",
     time: "5:00 PM – 9:00 PM",
-    flyerImage: "/images/pno-nov14-2026.png",
+    flyerImage: "/images/pno-dec19-2026.png",
     image: "/images/event-pno.webp",
     description: "Need a few hours to yourself? Let us keep the kids entertained while you enjoy a night out! Our Parents' Night Out is packed with active play, pizza, crafts, group games, and the possibility of a movie later in the evening for those who need a less active environment—giving your child a fun-filled evening with friends at Resilience Gymnastics Academy!",
     timeline: [

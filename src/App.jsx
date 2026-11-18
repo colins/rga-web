@@ -8,6 +8,7 @@ import EventsPage from './pages/EventsPage';
 import BirthdayPartiesPage from './pages/BirthdayPartiesPage';
 import TeamPage from './pages/TeamPage';
 import AboutPage from './pages/AboutPage';
+import TeamMeetsPage from './pages/TeamMeetsPage';
 import { themeOptions } from './data/scheduleData';
 
 function normalizePath(path) {
@@ -77,6 +78,8 @@ export default function App() {
         return <BirthdayPartiesPage activeTheme={activeTheme} />;
       case '/team':
         return <TeamPage activeTheme={activeTheme} onOpenEnroll={handleOpenEnroll} />;
+      case '/team-meets':
+        return <TeamMeetsPage />;
       case '/about':
         return <AboutPage activeTheme={activeTheme} />;
       case '/':
